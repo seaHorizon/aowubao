@@ -1,0 +1,164 @@
+<div class='double11' ng-show="userInfo.double11Show">
+    <div class="pr">
+        <img class="banner" style="width:100%;" src="images/activity/double11/top.png">
+        <!--<span class="qishu">第一期</span>-->
+    </div>
+    <main>
+        <div class="double11_propagate">
+            <strong>
+                拼手气，抢iPhone 8
+            </strong>
+            <p>&nbsp;</p>
+            <div class="propagate_qx">
+                <div class="clear">
+                    <strong ng-bind="productData.fullName"></strong>
+                    <div>
+                        <p class="pr">
+                            <span>&nbsp;</span>
+                            <span ng-style="pert">&nbsp;</span>
+                        </p>
+                        <p>
+                            <span>募集进度<em ng-bind="productData.pert+'%'">0%</em></span>
+                            <span><em ng-bind="investTotal+'人'">0人</em>已参加</span>
+                        </p>
+                    </div>
+                </div>
+                <main>
+                    <div class="part-a">
+                        <p><zdy ng-bind="productData.rate"></zdy><span>%</span></p>
+                        <p>历史年化收益</p>
+                    </div>
+                    <div class="part-b">
+                        <p><zdy ng-bind="productData.deadline"></zdy><span>天</span></p>
+                        <p>产品期限</p>
+                    </div>
+                    <div class="part-c">
+                        <p><zdy ng-bind="productData.leastaAmount"></zdy><span>元</span></p>
+                        <p>起投金额</p>
+                    </div>
+                    <!--<div class="part-d">-->
+                        <!--<input type="button" ng-click="InvestClick(productData.id,productData.type,productData.atid)" value="立即抢购" ng-if="productData.pert!=100">-->
+                        <!--<input type="button" value="待开奖" ng-if="productData.pert==100">-->
+                    <!--</div>-->
+                </main>
+                <p ng-bind="'参投金额必须为'+productData.increasAmount+'元及其整数倍'"></p>
+            </div>
+        </div>
+        <div class="double11_history">
+            <span><em ng-click="historyWiningClick()">查看历史中奖名单</em></span>
+            <p ng-click="tzjlClick">投资记录</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:27.5%;">用户名</th>
+                        <th style="width:20%;">投资金额</th>
+                        <th style="width:29.5%;">投资时间</th>
+                        <th style="width:22%;">幸运码</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="div_tableHeight">
+                <table ng-if="investList.length>0" class="tableList">
+                    <tbody>
+                        <tr ng-repeat="item in investList"  ng-init="checkLast($last)">
+                            <td style="width:27.5%;" ng-bind="item.mobilePhone"></td>
+                            <td ng-bind="item.amount" style="width:20%;"></td>
+                            <td style="width:29.5%;" ng-bind="item.investTime|date:'yyyy-MM-dd'"></td>
+                            <td class="lastTd" ng-bind="item.luckCodes" style="width:22%;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table ng-if="investList.length==0">
+                    <tbody>
+                        <tr>
+                            <td class="lastTd" colspan="4">没有投资记录</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <input type="button" value="查看我的幸运码" ng-click="LuckCodeClick()" ng-if="userInfo.login">
+        </div>
+        <div class="double11_rule">
+            <div class="clear rule_one">
+                <ul>
+                    <li>活动流程</li>
+                    <li class="nbsp">&nbsp;</li>
+                    <li>投资双十一专享标获取幸运码</li>
+                    <li class="nbsp">&nbsp;</li>
+                    <li>活动专享标满标1个工作日后开奖</li>
+                    <li class="nbsp">&nbsp;</li>
+                    <li>官方客服联系中奖用户发放奖品</li>
+                    <li class="nbsp">&nbsp;</li>
+                    <li>中奖用户收到奖品，活动结束</li>
+                </ul>
+            </div>
+            <div class="rule_two">
+                <p>*特别说明  为表活动公平公正，特将系统抽奖方式公布如下：</p>
+                <p>开奖码=当期活动标的代表字母+当期满标的最后一个投资人的手机后三位数+抽奖当天日期的个位数-N*300【N为（手机三位数+抽奖当天日期的个位数）/300的商】</p>
+                <div class="clear">
+                    <span class="fl">
+                       示例：
+                    </span>
+                    <ul class="fl">
+                        <li>第一期活动标的代表字母为A，手机号后三位数为857，抽奖日期为8日，则本期幸运码为A(857+8-2*300)=A265</li>
+                        <li>第一期活动标的代表字母为A，手机号后三位数为215，抽奖日期为16日，则本期幸运码为A(215+6-0*300)=A221</li>
+                        <li>第二期活动标的代表字母为B，手机号后三位数为059，抽奖日期为17日，则本期幸运码为B(59+7-0*300)=B66</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rule_three">
+                <p>活动规则</p>
+                <ul>
+                    <li>活动时间：2017年11月1日—2017年11月11日；</li>
+                    <li>双十一活动专享标为活动期间特有产品，限额30万、期限90天、10%年化收益率，此活动不可与其他活动优惠同时享受。</li>
+                    <li>每位参与本活动的用户，均有机会获得市场价值5888元的iPhone 8 64G手机一部（一期1部，颜色随机）</li>
+                    <li>参加本活动的起投金额为1000元，并按1000元及其整数倍递增，每投资1000元即可获得由系统自动生成的抽奖幸运码一个，投资金额越多，获奖机会越多，可以一次性抢购也可以分开多次抢购均可获得多个幸运码。</li>
+                    <li>开奖方式及中奖结果：我们将在每期活动满标后1个工作日内进行开奖，可在产品详情的投资记录中进行查看，如若中奖，中奖短信将发送至您的投资手机号，还可在嗷呜宝的App消息中进行查看。</li>
+                    <li>我们的客服人员将在三个工作日内联系中奖用户，请保持手机畅通，礼品将在活动结束后的7个工作日内进行统一发放；</li>
+                </ul>
+            </div>
+        </div>
+        <p class="pPaddingT">*本活动由嗷呜宝发起并就活动内容作出解释和说明</p>
+        <p>任何疑问请联系嗷呜宝</p>
+        <p class="pPaddingB">客服：021-26136426转8011  客服微信服务号：嗷呜宝</p>
+    </main>
+    <div class="div_Apple">
+        <p ng-show="displayApple">*苹果公司（Apple lnc.)&nbsp;非活动赞助商，本活动与苹果公司无关</p>
+        <p class="icpba ng-binding">沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v1.0.3</p>
+    </div>
+    <div class="double11_popup " ng-class="{true:'double11_zjjl'}[userInfo.lsjlShow]" ng-show="userInfo.lsjlShow||userInfo.xymShow">
+        <span class="double11_close" ng-click="deubleCloseClick()">&nbsp;</span>
+        <div ng-show="userInfo.lsjlShow">
+            <table>
+                <thead>
+                    <tr>
+                        <th>中奖用户</th>
+                        <th>中奖码</th>
+                        <th>中奖时间</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="popup_xym">
+                <table>
+                    <tbody ng-if="history.length>0">
+                        <tr ng-repeat="item in history">
+                            <td><span ng-bind="item.prizeMobile"></span></td>
+                            <td ng-bind="item.prizeCode"></td>
+                            <td ng-bind="item.prizeDate|date:'yyyy-MM-dd'"></td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="history.length==0">
+                        <tr>
+                            <td colspan="3">没有中奖记录</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ul class="clear popup_zjmd" ng-show="userInfo.xymShow">
+            <li ng-if="LuckCodes.length>0" ng-repeat="item in LuckCodes" ng-bind="item"></li>
+            <li style="width:100%;" ng-if="LuckCodes.length==0">没有幸运码</li>
+        </ul>
+    </div>
+    <div class="backgroundBack" ng-show="userInfo.lsjlShow||userInfo.xymShow"></div>
+</div>

@@ -1,0 +1,151 @@
+<div class="wrap newhand-wrapper cp-wrapper">
+    <div class="common-head" ng-click="toback()"><i></i>
+        <p>{{title}}</p>
+    </div>
+    <div>
+        <!-- 头 -->
+        <div class="handbox marT info-box">
+            <h2>{{cp.fullName}}</h2>
+            <table>
+                <tr>
+                    <td width="100%" class="noleft" style="border-right:none;text-align:center;">
+                        <div class="mod">
+                            <span>历史年化收益率</span>
+                            <p><i>{{cp.rate}}%</i>
+                                <i ng-if="cp.activityRate>0">+{{cp.activityRate | number:1}}%</i>
+                            </p>
+                            <p class="modinfo">{{cp.deadline}}天 | {{cp.leastaAmount}}元起投</p>
+                            <div class="percentage-box" style="width:100%;">
+                                <i>{{cp.pert }}%</i>
+                                <div class="percentage" style="width:88%"><span ng-attr-style="width: {{cp.pert | setProgress}}%"></span></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bot">
+                        <div class="mod">
+                            <p class="left"><span>剩余可投（元）</span>{{cp.surplusAmount | number}}</p>
+                            <p class="right"><span>剩余期限</span>{{nowTimer}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="info-list">
+            <table class="list-table">
+                <tr>
+                    <td class="list-title">
+                        <div>计息方式<img src="images/newhand/ico_cpxq.png"></div>
+                    </td>
+                    <td class="list-con">
+                        <div ng-if="cpType!=3">次日计息</div>
+                        <div ng-if="cpType==3">满标后T+1计息</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="list-title">
+                        <div>还款方式<img src="images/newhand/ico_coin_2.png"></div>
+                    </td>
+                    <td class="list-con">
+                        <div ng-bind="{1:'到期一次还本付息',5:'其他'}[cp.repayType]"></div>
+                    </td>
+                </tr>
+                <!-- <tr ng-if="cpType!=3">
+                    <td class="list-title">
+                        <div>资金保障<img style="margin-top:0.7rem;" src="images/newhand/ico_zjbz.png"></div>
+                    </td>
+                    <td class="list-con">
+                        <div>四川天府银行存管</div>
+                    </td>
+                </tr> -->
+            </table>
+        </div>
+
+        <!-- tab -->
+        <ul class="nav nav-pills mb1">
+            <li role="presentation" ng-class="{0:'active'}[active]" ng-click="active=0"><a href="">项目介绍</a></li>
+            <li role="presentation" ng-class="{2:'active'}[active]" ng-click="active=2"><a href="">安全保障</a></li>
+            <li role="presentation" ng-class="{1:'active'}[active]" ng-click="active=1"><a href="">投资记录({{ investLists }})</a></li>
+        </ul>
+        <!-- tab 0 -->
+        <div class="panel panel-default" ng-if="active==0">
+            <div class="panel-heading" ng-if="extendInfos&&extendInfos.length>0">
+                <div>产品说明</div>
+            </div>
+            <div class="panel-body" ng-if="extendInfos&&extendInfos.length>0">
+                <ul class="panel-body-list">
+                    <li ng-repeat="item in extendInfos track by $index">
+                        <h3>{{item.title}}<i ng-click="slideToggle($event)"></i></h3>
+                        <p style="padding-left:10px;">{{item.content}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-heading" ng-if="picList&&picList.length>0">
+                <div>产品资料情况</div>
+            </div>
+            <!-- List group -->
+            <ul class="list-group" ng-if="picList&&picList.length>0">
+                <li class="list-group-item" ng-repeat="pic in picList">
+                    <div>
+                        <img ng-click="showImg($event)" src="{{pic.bigUrl}}">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="panel panel-default" ng-if="active==2">
+            <div class="detail_aqbz">
+                <div>
+                    <h1>顶级律师合规支持</h1>
+                    <div class="img-box"><img src="images/AQBZ/icon-a.png" alt=""></div>
+                    <p>嗷呜宝特聘国内顶级律所“君澜（上海）律师事务所”，为嗷呜宝商业模式的合法性、交易模式的合规性提供法律支持。</p>
+                </div>
+                <div>
+                    <h1>360°严格风控体系</h1>
+                    <div class="img-box"><img class="special" src="images/AQBZ/icon-b.png" alt=""></div>
+                </div>
+                <div>
+                    <h1>质保服务专款垫付</h1>
+                    <div class="img-box"><img src="images/AQBZ/icon-c.png" alt=""></div>
+                    <p>嗷呜宝平台在平台成立之初就在银行储备了千万级存款保障，作为质保服务专款，一旦借款人还款出现逾期时，将由质保服务专款进行先行垫付。</p>
+                </div>
+                <div>
+                    <h1>技术安全保障</h1>
+                    <div class="img-box"><img src="images/AQBZ/icon-d.png" alt=""></div>
+                    <p>应用防火墙和入侵检测系统，系统之间隔离部署、多机房数据备份和容灾，保障系统数据安全；敏感数据采用银行级技术加密，保障用户数据安全；架设多层防火墙，并采用安全套接字（SSL/TLS）技术，切实保障网络传输信道安全高效。</p>
+                </div>
+            </div>
+        </div>
+        <!-- tab1 -->
+        <div class="panel panel-default" ng-if="active==1">
+            <table class="table cp-tab">
+                <thead>
+                    <tr>
+                        <th width="40%">用户</th>
+                        <th width="30%">投资金额(元)</th>
+                        <th width="30%" class="date">投资时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="invest in investList">
+                        <!-- <td class="pr">{{invest.realName | limitTo:1}}{{invest.sex | sex}}<em ng-if="invest.isWin">&nbsp;</em></td> -->
+
+                        <td class="pr" style="text-align: right">
+                            <img src="images/list/icon-yd.png" alt="" ng-if="invest.joinType != 0">
+                            <img src="images/list/icon-pc.png" alt="" ng-if="invest.joinType == 0"> {{invest.mobilephone}}
+                            <em ng-if="invest.isWin">&nbsp;</em></td>
+                        <td>{{invest.amount|number:0}}</td>
+                        <!-- <td>{{invest.amount}}</td> -->
+                        <td class="date">{{invest.investTime|date:'yyyy-MM-dd'}}<br>{{invest.investTime|date:'HH:mm:ss'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="sign_box_bottom newhand-btn" ng-if="(a|isRegister).register && cp.status==5" ui-sref="investment">立即投资</div>
+    <div class="sign_box_bottom newhand-btn newhand-btn-default" ng-if="(a|isRegister).register && cp.status!=5">{{{6:'募集结束',7:'募集失败',8:'待还款',9:'已还款'}[cp.status]}}</div>
+    <div class="sign_box_bottom newhand-btn" ng-if="!(a|isRegister).register" ng-click="gologin()">立即登录</div>
+    <div class="mask" ng-show="showBigImg" ng-click="showBigImg = false">
+        <div class="check-img-wrap"><img src="{{bigImgSrc}}"></div>
+    </div>
+</div>

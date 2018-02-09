@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <style type="text/css">
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0, width=device-width,viewport-fit:contain">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit:contain"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="favicon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles/icons-files/icons.css">
+    <link rel="stylesheet" href="styles/dialog/ngDialog.css">
+    <link rel="stylesheet" href="styles/dialog/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="styles/dialog/ngDialog-theme-plain.css">
+    <link rel="stylesheet" href="styles/dialog/ngDialog-custom-width.css">
+    <link rel="stylesheet" href="framework/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/stylesheets/screen.css">
+
+    <link rel="stylesheet" href="css/style.css?ver=201710271043">
+    <link rel="stylesheet" href="framework/swiper.min.css">
+    <title ng-bind="title">嗷呜宝app理财投资、傲系金服、嗷呜宝官网</title>
+    <meta name="keywords" content="嗷呜宝，aowubao，傲系金服，互联网金融信息，个人家庭投资理财，现金存款网贷平台，P2P金融，高收益理财，赚零花钱，融360麻袋理财，口袋票据抵押">
+    <meta name="description" content="嗷呜宝怎么样靠谱吗?嗷呜宝官网(aowubao.com)是上海频盛实业发展有限公司运营的互联网金融信息平台,嗷呜宝投资理财方便快捷,傲系金服安全可靠.嗷呜宝多少起投?欢迎进站咨询.五大还款来源保障资金安全.">
+    <script>
+        // var _hmt = _hmt || [];
+        // _hmt.push(['_setAccount', "2652e6aec825bac9f3bb1b7dde986e68"]);
+        // (function() {
+        //   var hm = document.createElement("script");
+        //   hm.src = "//hm.baidu.com/hm.js?2652e6aec825bac9f3bb1b7dde986e68";
+        //   var s = document.getElementsByTagName("script")[0]; 
+        //   s.parentNode.insertBefore(hm, s);
+        // })();
+    </script>
+
+
+    <!-- <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript">
+        console.log(returnCitySN["cip"] + ',' + returnCitySN["cname"]);
+    </script> -->
+
+</head>
+
+<body>
+    <div ng-show="maskHidde" class="loading">
+        <div>
+            <img style="width: 2em;height: 2em;" src="images/loading.gif">
+        </div>
+    </div>
+    <div ng-show="maskError" ng-click="maskError=false" class="maskError ng-cloak">
+        <div class="maskError-box">
+            <p>{{errorText}}</p>
+        </div>
+    </div>
+
+    <div ui-view class="ng-cloak"></div>
+    <!-- <script src="https://s19.cnzz.com/z_stat.php?id=1272813243&web_id=1272813243" language="JavaScript"></script> -->
+    <script type="text/javascript" src="framework/require.js" data-main="js/main"></script>
+</body>
+
+</html>

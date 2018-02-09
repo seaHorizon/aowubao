@@ -1,0 +1,23 @@
+<div class="newhand-wrapper cp-wrapper tyjSuccess" style="padding:0;margin-bottom:1rem;">
+    <div class="common-head">
+        <p>{{title}}</p><span class="right" ui-sref="main.myaccountHome">关闭</span></div>
+    <div class="investSuccess">
+        <div class="investSuccess-info">
+            <img src="images/newhand/right.png" />
+            <h2 style="margin-bottom:1rem;">投资成功</h2>
+            <dl>
+                <dt>新手体验专享标</dt>
+                <dd>投资金额<span>{{data.amount | number:2}}元</span></dd>
+                <dd>投资期限<span>1天</span></dd>
+                <dd>历史年化收益率
+                    <span>{{data.rate}}%
+                        <span ng-if="data.activityRate>0">+{{data.activityRate}}%</span>
+                    </span>
+
+                </dd>
+                <dd>待收收益<span>{{data.shouyi | number:2}}元</span></dd>
+            </dl>
+            <!-- <p class="message" ng-if="data.realVerify==1&&data.redTotal>0">您还有{{data.redTotal}}个红包未使用，激活即可变现哦！</p> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,318 @@
+<div class="romanticNewYear">
+    <header>
+        <h1 ui-sref="main.home" ng-if="wap"></h1>
+        <h1 ng-if="!wap"></h1>
+        <div style="font-size:0;"><img class="banner" style="width:100%;display: block;" src="images/activity/romanticNewYear/banner.png"></div>
+        <p class="timer">活动时间：2018年2月10日-2018年2月28日</p>
+        <p class="guanggao"><span class="guanggaoBorder">广告</span><span class="guanggaoyu">投资有风险，理财需谨慎</span></p>
+        <div class="rule-btn" ng-click="activityRule()">
+            <span>活动<br>规则</span>
+        </div>
+        <div class="computer-btn" ng-click="activityComputer()">
+            <span>财富值<br>计算器</span>
+        </div>
+    </header>
+    <section>
+        <div class="romanticNewYear-step">
+            <div class="firstStep">
+                <img src="images/activity/romanticNewYear/firstStep.png" alt="">
+            </div>
+            <div class="faceInvite">
+                <div class="left" ng-click="inviteShare()">分享邀请</div>
+                <div class="right" ng-click="faceToFace()">面对面邀请</div>
+            </div>
+            <div class="secondStep">
+                <img src="images/activity/romanticNewYear/secondStep.png" style="margin-top:0;" alt="">
+            </div>
+        </div>
+        <div class="gift-box">
+            <ul>
+                <li ng-repeat="item in activityGift track by $index">
+                    <div>
+                        <p class="giftName"><span>{{item.giftName}}</span></p>
+                        <p ng-if="$index==7||$index==6" style="color: #d20909;font-size: 1rem;"><span style="-webkit-transform: scale(0.8);display: block;line-height: 0.5rem;">每人仅限领取一次哦！</span></p>
+                        <img src="{{item.h5GiftImageUrl}}" alt="">
+                        <a href="javaScript:;" class="wealthValue" style="height: 1.5rem;" ng-show="!item.showInfo" ng-click="showWealthValue(item)"><span>{{item.investAmount}}&nbsp;&nbsp;财富值</span><i></i></a>
+                        <a href="javaScript:;" class="wealthValue wealthValue-activity" ng-show="item.showInfo" ng-click="hideWealthValue(item)"><span>{{item.investAmount}}&nbsp;&nbsp;财富值</span>
+                                    <i style="background:url('/images/activity/newYear/icon2.png') no-repeat;background-size:100%;"></i>
+                                    <div style="margin-top: 1.5rem;">
+                                        <p><span class="value">{{item.oneMessageProductList[$index]}}</span>
+                                            <span class="moneyList">{{item.oneMessageMoneyList[$index]}}</span>
+                                        </p>
+                                        <p><span class="value">{{item.oneMessageProductList1[$index]}}</span>
+                                            <span class="moneyList">{{item.oneMessageMoneyList1[$index]}}</span>
+                                        </p>
+                                        <p><span class="value">{{item.oneMessageProductList2[$index]}}</span>
+                                            <span class="moneyList">{{item.oneMessageMoneyList2[$index]}}</span>
+                                        </p>
+                                    </div>
+                                </a>
+                        <span class="radius" ng-class="{true: 'radius-active', false: ''}[item.showInfo]">
+                                    <a href="" ng-click="lijiduihuan1(item)" ng-if="item.canGet">立即兑换</a>
+                                    <a href="" class="yiduihuan" ng-if="!item.canGet">已兑换</a>
+                                </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ActivityStatistics">
+            <h2 class="Activity-title">活动统计</h2>
+            <div class="statistics">
+                <h2>我的活动统计表</h2>
+                <div class="isLogin" ng-show="!isEntry">
+                    <a href="aowb://page=4?" ng-if="!wap">登录</a>
+                    <a ui-sref="dl({returnurl:'romanticNewYear'})" ng-if="wap">登录</a>
+                    <span>查看我的财富值</span>
+                </div>
+                <div class="money" ng-show="isEntry">
+                    <div>
+                        <h3>累计财富值</h3>
+                        <p>{{totalAmount || 0}}</p>
+                    </div>
+                    <div>
+                        <h3>已兑换财富值</h3>
+                        <p>{{usedAmount || 0}}</p>
+                    </div>
+                    <div>
+                        <h3>剩余财富值</h3>
+                        <p>{{surplusAmount || 0}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="record">
+                <div class="record-title">
+                    <div class="record-titleBox">
+                        <p ng-class="{'activity-color-yellow':record,'':!record}" ng-click="recording1()">用户兑奖记录</p>
+                    </div>
+                    <div class="record-titleBox">
+                        <p ng-class="{'activity-color-yellow':!record,'':record}" class="second-title" ng-click="recording2()">我的兑奖记录</p>
+                    </div>
+                </div>
+                <div class="myLottery" ng-if="!record">
+                    <div class="isLogin" ng-show="!isEntry&&!record">
+                        <a href="aowb://page=4?" ng-if="!wap">登录</a>
+                        <a ui-sref="dl({returnurl:'romanticNewYear'})" ng-if="wap">登录</a>
+                        <span>查看我的兑奖记录</span>
+                    </div>
+                    <div ng-if="isEntry&&!record">
+                        <div class="myLottery-title">
+                            <h3>兑奖时间</h3>
+                            <h3>兑奖奖品</h3>
+                            <h3 class="state">兑奖状态</h3>
+                        </div>
+                        <div ng-if="invest" style="font-size:0.8rem;color:#666;text-align:center;padding:3rem 0;">您还没有兑换过奖品哦，快去投资兑换新年好礼吧！</div>
+                        <div style="overflow:scroll;height:9rem;width:100%;" ng-if="!invest">
+                            <div class="contents1" ng-repeat="item in crashList">
+                                <div class="timer">
+                                    <p>{{item.addTime |date:'yyyy-MM-dd'}}</p>
+                                </div>
+                                <div class="prize">
+                                    <p>{{item.giftName}}</p>
+                                </div>
+                                <div class="state">
+                                    <p ng-if="item.status==0">已领取</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="otherLottery" ng-if="record">
+                    <div class="otherLottery-title">
+                        <h3>兑奖时间</h3>
+                        <h3>兑奖号码</h3>
+                        <h3>兑奖奖品</h3>
+                    </div>
+                    <div class="crashList">
+                        <div class="wraps">
+                            <div class="contents2" ng-repeat="item in crashList">
+                                <div class="timer">
+                                    <p>{{item.addTime |date:'yyyy-MM-dd'}}</p>
+                                </div>
+                                <div class="prize">
+                                    <p>{{item.mobilePhone |limitTo:3}}****{{item.mobilePhone | limitTo:-4}}</p>
+                                </div>
+                                <div class="tel">
+                                    <p>{{item.giftName}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="thirdStep">
+            <img src="images/activity/romanticNewYear/thirdStep.png" alt="">
+        </div>
+    </section>
+    <div class="footer-info">
+        <p><span>本活动最终解释权归嗷呜宝所有，任何疑问请联系嗷呜宝客服</span></p>
+        <p><span>客服电话：400-921-0758 客服微信服务号：嗷呜宝</span></p>
+        <p ng-if="channel==1"><span>*苹果公司(Apple lnc.)非活动赞助商，本活动与苹果公司无关</span></p>
+        <div class="icpba-doubleEgg"><span>沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v{{version}}</span></div>
+    </div>
+
+    <div class="btn-footer">
+        <div class="btn-touzi" ng-click="lijitouzi()">
+            <a href="">立即投资</a>
+        </div>
+        <div class="btn-box" ng-click="lijiyaoqing()">
+            <a href="" style="background-color:#f4760f;">立即分享</a>
+        </div>
+    </div>
+
+    <div class="ruleBox" style="overflow:scroll;z-index:999;" ng-show="showRule">
+        <i ng-click="closeRule()"></i>
+        <div class="content" style="height: 29rem;">
+            <h2 style="margin-bottom: 0.5rem;">————·活动规则·————</h2>
+            <div style="overflow:scroll;height:25rem;">
+                <p>活动时间：2018年2月10日—2018年2月28日</p>
+                <p>活动对象：嗷呜宝注册用户</p>
+                <ol>
+                    <li>1、活动期间，用户投资相应产品即可享受对应加息，获得加息好礼，同时还可获得投资相应产品对应的财富值，使用财富值即可兑换新年好礼；</li>
+                    <li>2、活动期间邀请好友奖励升级，每邀请一位好友首投≥5000元可奖励88元返现红包，88元返现红包可投资任意标的（新手标除外）任意金额使用，原邀请好友首投≥3000元奖励20元返现红包不变，可叠加奖励；</li>
+                    <li>3、财富值按照用户活动期间累计投资≥30天产品的新增投资金额进行折算（财富值=3.8×90天产品投资额=2.2×60天产品投资额=1×30天产品投资额，180天产品不参与本次活动），每兑换一次奖品将扣除当次兑换奖品的财富值，财富值将在活动结束后清零；</li>
+                    <li>4、请在活动结束前及时点击“立即兑换”按钮进行奖品兑换，以免出现活动过期，奖品不能及时兑换的问题；一旦确定兑换奖品后，兑换奖品不能更改，兑换后相关兑换的奖品可在站内信中进行查看；</li>
+                    <li>5、活动结束后，我们将在7个工作日内将礼品统一发放，奖励的京东礼品卡将会以短信的形式发送至默认投资手机号，话费直接充值至默认投资手机号，邀请好友的返现红包将在好友首投达标后1小时内发放，请注意查收；</li>
+                    <li>6、不与其它活动同享，本公司员工不可参与本次活动。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- 分享 -->
+    <div class="activity-firend-boxh5" ng-click="closeshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，发送给您的好友注册并投资</p>
+            <p id="shareurl" style="text-align: left;" ng-bind="shareUrl" ng-if="!flag" class="shareurl">{{shareUrl}}</p>
+            <textarea id="shareurl" ng-model="shareUrl" ng-if="flag" class="shareurl">{{shareUrl}}</textarea>
+            <a ng-click="copyShare()" ng-show="!isCopy&&flag">复制链接</a>
+            <a ng-show="!flag" style="color:#999;">{{isCopytext}}</a>
+            <a ng-show="flag&&isCopy" style="color:#999;">{{isCopytext}}</a>
+        </div>
+    </div>
+    <div class="activity-inviteFirend-boxh5" ng-click="inviteCloseshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，邀请给您的好友注册并投资</p>
+            <p id="shareurl" style="text-align: left;" ng-bind="shareUrl1" ng-if="!flag1" class="shareurl">{{shareUrl1}}</p>
+            <textarea id="shareurl1" ng-model="shareUrl1" ng-if="flag1" class="shareurl">{{shareUrl1}}</textarea>
+            <a ng-click="copyShare1()" ng-show="!isCopy1&&flag1">复制链接</a>
+            <a ng-show="!flag1" style="color:#999;">{{isCopytext1}}</a>
+            <a ng-show="flag1&&isCopy1" style="color:#999;">{{isCopytext1}}</a>
+        </div>
+    </div>
+    <div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+        <img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+    </div>
+    <!-- 遮罩层 -->
+    <!-- 活动结束 -->
+    <div class="activityEnd" ng-show="!activityIng">
+        <div>
+            <img src="images/activity/romanticNewYear/activityEnd.png" alt=" ">
+            <a ui-sref="main.home" ng-if="wap" style="color:#c61a00">我知道了</a>
+            <a href="aowb://page=1?" ng-if="!wap" style="color:#c61a00">我知道了</a>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="login-origine" ng-show="isJoin">
+        <div class="login-box1" style="background-color:#ffba1b">
+            <i class="close-icon" ng-click="toBack()"></i>
+            <img src="images/activity/romanticNewYear/dog.png" class="imgLogin" alt=" ">
+            <div class="prompt">
+                <p style="font-weight:700">亲&nbsp;您还没有登录</p>
+                <p style="font-size:0.6rem;">请登录后再参与活动~</p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="toBack()">关闭</a>
+                <a href="aowb://page=4?" ng-if="!wap" class="logining">登录</a>
+                <a ui-sref="dl({returnurl: 'romanticNewYear'})" ng-if="wap" class="logining">登录</a>
+            </div>
+        </div>
+    </div>
+    <!-- 领取成功 -->
+    <div class="login-origine" ng-show="isSuccess">
+        <div class="login-box1" style="background-color:#ffba1b">
+            <i class="close-icon" ng-click="close1()"></i>
+            <img src="images/activity/romanticNewYear/dog.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="font-weight:700">恭喜您！</p>
+                <p>礼包已兑换成功~</p>
+            </div>
+            <div class="btn-box1">
+                <p ng-click="close1()">知道啦</p>
+            </div>
+        </div>
+    </div>
+    <!-- 确认兑换 -->
+    <div class="login-origine" ng-show="isConfirm">
+        <div class="login-box1" style="background-color:#ffba1b">
+            <i class="close-icon" ng-click="back()"></i>
+            <img src="images/activity/romanticNewYear/dog.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="line-height:normal;">
+                    <span>您确认兑换{{giftName}}?</span><br>
+                </p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="back()">取消</a>
+                <a href="" class="logining" ng-click="confirm()">兑换</a>
+            </div>
+        </div>
+    </div>
+    <!-- 提示未达到兑换条件 -->
+    <div class="login-origine" ng-show="isAchieve">
+        <div class="login-box1" style="background-color:#ffba1b">
+            <i class="close-icon" ng-click="close2()"></i>
+            <img src="images/activity/romanticNewYear/dog.png" alt="">
+            <div class="prompt ">
+
+                <p style="line-height:normal;padding:0.5rem 0;">
+                    还差一步就能兑换心仪好礼哦！~
+                </p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="cancel()">我知道了</a>
+                <a href="aowb://page=2?" ng-if="!wap" class="logining">继续投资</a>
+                <a ui-sref="main.bankBillList" ng-if="wap" class="logining">继续投资</a>
+            </div>
+        </div>
+    </div>
+    <!-- 面对面分享 -->
+    <div class="login-origine" ng-show="isFace">
+        <div class="login-box1" style="background-color:#ffba1b;padding:2rem 0; margin: 10rem auto;">
+            <i class="close-icon" ng-click="closeFace()"></i>
+            <div class="prompt">
+                <p style="font-weight:700;">我的专属邀请二维码</p>
+                <p ng-if="wap">{{userMobilePhone |limitTo:3}}****{{userMobilePhone | limitTo:-4}}</p>
+                <p ng-if="!wap">{{userMobilePhone |limitTo:3}}****{{userMobilePhone | limitTo:-4}}</p>
+            </div>
+            <div class="codeDiv">
+                <qrcode version="5" error-correction-level="L" size="100" data="https://m.aowubao.com//friendreg2?wap=true&recommCode={{recommCode}}"></qrcode>
+            </div>
+        </div>
+    </div>
+    <div class="login-origine1" style="z-index: 999;" ng-show="showComputer">
+        <div class="computer">
+            <h2>财富值计算</h2>
+            <div class="ipt"> <input type="text" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" placeholder="预设投资金额" maxlength="12" ng-model="computerValue"><i>(元)</i></div>
+
+            <div class="computer-result">
+                <p>
+                    <span class="left">投资30天产品</span>
+                    <span class="right">获得财富值{{1*computerValue||0 | number:0}}</span>
+                </p>
+                <p>
+                    <span class="left">投资60天产品</span>
+                    <span class="right">获得财富值{{2.2*computerValue||0 | number:0}}</span>
+                </p>
+                <p>
+                    <span class="left">投资90天产品</span>
+                    <span class="right">获得财富值{{3.8*computerValue||0 | number:0}}</span>
+                </p>
+            </div>
+            <div class="computer-btn">
+                <a href="" ng-click="closeComputer()">关闭</a>
+                <a href="" ng-click="reset()" style="float:right;margin-right:1.5rem;">重置</a>
+            </div>
+        </div>
+    </div>
+
+</div>

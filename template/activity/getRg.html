@@ -1,0 +1,138 @@
+<div class="getRg">
+    <img class="banner" style="width:100%;" src="images/activity/Thanksgiving/banner.png">
+    <main>
+        <div>
+            <div class="left">
+                <img src="images/activity/Thanksgiving/price_bg1.png" alt="">
+                <i>￥</i>
+                <span>26</span>
+            </div>
+            <div class="right">
+                <p>投资满3000元</p>
+                <p>标期：30天及以上</p>
+                <p>返现红包</p>
+            </div>
+        </div>
+        <div>
+            <div class="right">
+                <img src="images/activity/Thanksgiving/price_bg2.png" alt="">
+                <i>￥</i>
+                <span>58</span>
+            </div>
+            <div class="left">
+                <p>投资满5000元</p>
+                <p>标期：30天及以上</p>
+                <p>返现红包</p>
+            </div>
+        </div>
+        <div>
+            <div class="left">
+                <img src="images/activity/Thanksgiving/price_bg3.png" alt="">
+                <i>￥</i>
+                <span>88</span>
+            </div>
+            <div class="right">
+                <p>投资满10000元</p>
+                <p>标期：30天及以上</p>
+                <p>返现红包</p>
+            </div>
+        </div>
+        <div>
+            <div class="right">
+                <img src="images/activity/Thanksgiving/price_bg4.png" alt="">
+                <i>￥</i>
+                <span>168</span>
+            </div>
+            <div class="left">
+                <p>投资满10000元</p>
+                <p>标期：60天及以上</p>
+                <p>返现红包</p>
+            </div>
+        </div>
+        <div>
+            <div class="left">
+                <img src="images/activity/Thanksgiving/price_bg5.png" alt="">
+                <i>￥</i>
+                <span>288</span>
+            </div>
+            <div class="right">
+                <p>投资满30000元</p>
+                <p>标期：30天及以上</p>
+                <p>返现红包</p>
+            </div>
+        </div>
+        <div ng-click="receive()" ng-show="!isLogin || (isLogin&&!isRecieved)" ng-class="{'button-receive':wap,'big-button':!wap}">
+            <!-- 未领取 -->
+            <img src="images/activity/Thanksgiving/receive.png" alt="">
+        </div>
+        <div class="backHome" ui-sref="main.home" ng-if="wap">
+            <img src="images/activity/Thanksgiving/backhome.png" alt="">
+        </div>
+        <div ng-show="isRecieved" ng-class="{'button-receive':wap,'big-button':!wap}">
+            <img src="images/activity/Thanksgiving/already.png" alt="">
+        </div>
+        <img src="images/activity/Thanksgiving/tk_bg.png " alt="" class="mask-layer" ng-show="zhezhaoceng" ng-click="returnRg()">
+
+
+    </main>
+    <div class="rule-box">
+        <div class="content" style="width:100%;">
+            <h1>活动规则</h1>
+            <ol>
+                <li>1、活动时间：2017年11月23日-2017年11月30日</li>
+                <li>2、活动对象：嗷呜宝注册用户</li>
+                <li>3、活动期间，每位用户可一次性领取5张红包返现券，投资相应额度即可激活使用。
+                    <ul>
+                        <li>单笔投资≥3000元，期限≥30天的理财产品，可使用26元返现红包，红包有效期为7天。</li>
+                        <li>单笔投资≥5000元，期限≥30天的理财产品，可使用58元返现红包，红包有效期为7天。</li>
+                        <li>单笔投资≥10000元，期限≥30天的理财产品，可使用88元返现红包，红包有效期为15天。</li>
+                        <li>单笔投资≥10000元，期限≥60天的理财产品，可使用168元返现红包，红包有效期为30天。</li>
+                        <li>单笔投资≥30000元，期限≥30天的理财产品，可使用288元返现红包，红包有效期为30天。</li>
+                    </ul>
+                </li>
+                <li>4、提示领取成功后，可登录到我的优惠券内查看使用。</li>
+            </ol>
+            <p>注：本次活动所有用户参与，每位用户限领1次。</p>
+        </div>
+    </div>
+    <!--底部悬浮-->
+    <!-- <footer class="footer" ng-if="ftype==1">
+        <div>
+            <p class="login">马上登陆&#x3000;邀请赚钱！</p>
+        </div>
+        <div class="button-box">
+            <img ng-if="wap" src="images/activity/inviteFriend1/login-button.png" ui-sref="dl({returnurl:'inviteFriend1'})">
+            <a href="aowb://page=4?" ng-if="!wap">
+                <img src="images/activity/inviteFriend1/login-button.png">
+            </a>
+        </div>
+    </footer>
+    <footer class="footer" ng-if="ftype==2">
+        <div>
+            <p class="login">累计获得返现<span> {{rewards}} </span>元</p>
+        </div>
+        <div class="button-box">
+            <img ng-click="lijiyaoqing()" src="images/activity/inviteFriend1/invite-button.png">
+        </div>
+    </footer>
+    <!-- 分享 -->
+    <!-- <div class="activity-firend-boxh5" ng-click="closeshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，发送给您的好友注册并投资</p>
+            <textarea id="shareurl" ng-model="shareUrl" class="shareurl">{{shareUrl}}</textarea>
+            <a ng-click="copyShare()" ng-show="!isCopy">复制链接</a>
+            <a ng-show="isCopy" style="color:#999;">{{isCopytext}}</a>
+        </div>
+    </div>
+    <div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+        <img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+    </div> -->
+    <p class="activity-firend-info">本活动最终解释权归嗷呜宝所有，任何疑问</p>
+    <p class="activity-firend-kefu">
+        <span>任何疑问请联系嗷呜宝客服:021-26136426转8011</span><br>
+        <span>客服微信服务号：嗷呜宝</span>
+    </p>
+    <p style="color:#A83b3b;text-align:center;font-size:0.9rem;">*苹果公司（Apple Inc.）非活动赞助商，本活动与苹果公司无关</p>
+    <!--icp备案号-->
+    <!-- <div class="icpba">沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v{{version}}</div> -->
+</div>

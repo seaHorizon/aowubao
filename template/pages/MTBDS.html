@@ -1,0 +1,11 @@
+<div class="wap-more-box" ng-controller="MTBDSCtrl">
+    <div class="common-head" ng-click="toback()" ng-if="wap" style="position: fixed;"><i></i>
+        <p>{{title}}</p>
+    </div>
+    <div style="height: 3.5rem;background: rgb(242,242,242);"></div>
+    <div class="ggxq-content">
+        <h2>{{ggxq.title}}</h2>
+        <h3>{{ggxq.createTime | date:'yyyy-MM-dd'}}</h3>
+        <div ng-bind-html="ggxq.content | asHtml"></div>
+    </div>
+</div>

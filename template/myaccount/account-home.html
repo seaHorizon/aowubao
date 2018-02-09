@@ -1,0 +1,150 @@
+<div class="account-wrapper" ng-controller="accountHomeCtrl">
+    <div class="home-header">
+        <div class="home-info">
+            <div class="my-phone">{{user.mobilephone | limitTo:3}}****{{user.mobilephone | limitTo:-4}}</div>
+            <!-- <ul>
+				<li ui-sref="myInfo" class="h-user" ng-if="accunt.realVerify==1"><img src="images/myaccount/ico_user_1.png"></li>
+				<li ui-sref="certification" class="h-user" ng-if="accunt.realVerify==0"><img src="images/myaccount/ico_user_1.png"></li>
+				<li class="h-mobile">{{user.mobilephone | limitTo:3}}*****{{user.mobilephone | limitTo:-3}}</li>
+				<li class="ident" ng-if="accunt.realVerify==1"><i class="fuiou"></i>已认证</li>
+				<li class="ident" ng-if="accunt.realVerify==0"><i></i>未认证</li>
+			</ul> -->
+            <div class="assets">
+                <!-- <span class="total">{{(accunt.wprincipal + accunt.winterest)| isNumber2}}</span> -->
+                <span ng-hide="num" class="total">{{(accunt.accumulatedIncome)| isNumber2 }}</span>
+                <span ng-show="num" class="total">****</span>
+                <p class="account-all">
+                    <img ng-hide="num" ng-click="eyes()" src="/images/myaccount/eyes1.png">
+                    <img ng-show="num" ng-click="eyes()" src="/images/myaccount/eyes2.png"> 累计收益(元)
+                </p>
+                <div class="h-over" style="padding-left:15%">
+                    <p ng-hide="num" class="account">{{(accunt.wprincipal + accunt.balance + accunt.free) | isNumber2 }}</p>
+                    <p ng-show="num" class="account">******</p>
+                    <p>总资产(元)</p>
+
+                </div>
+                <div class="dividing"></div>
+                <div class="h-over" style="padding-right:15%">
+                    <p ng-hide="num" class="account">{{accunt.balance | isNumber2 }}</p>
+                    <p ng-show="num" class="account">******</p>
+                    <p>可用余额(元)</p>
+
+                </div>
+
+            </div>
+        </div>
+        <!--btn-->
+        <table class="btns">
+            <tr>
+                <td class="xieyi-btn" style="position: relative;">
+                    <a ng-if="accunt.realVerify==1" ui-sref="getCash">
+                        <!-- <i class="ico_withdraw"></i> -->
+                        <img src="images/myaccount/recharge.png" alt="">
+                        <p>提现</p>
+                    </a>
+                    <a ng-if="accunt.realVerify==0" ui-sref="certification">
+                        <!-- <i class="ico_withdraw"></i> -->
+                        <img src="images/myaccount/recharge.png" alt="">
+                        <p>提现</p>
+                    </a>
+                    <!-- <img ng-if="iconhongbao==true" ng-click="openredpackets()" src="images/activity/redPackets/hongbao2.png" class="hongbao" /> -->
+                </td>
+                <td class="chongzhi" ng-if="accunt.realVerify==1" ui-sref="recharge" class="payback-btn">
+                    <!-- <i class="ico_recharge"></i> -->
+                    <img src="images/myaccount/recharge.png" alt="">
+                    <p>充值</p>
+                </td>
+                <td class="chongzhi" ng-if="accunt.realVerify==0" ui-sref="certification" class="payback-btn">
+                    <i class="ico_recharge"></i>
+                    <img src="images/myaccount/recharge.png" alt="">
+                    <p>充值</p>
+                </td>
+
+            </tr>
+        </table>
+        <div class="div-nav">
+            <div ui-sref="myInvest">
+                <img ng-if="accunt.accumulatedIncome==0" src="images/myaccount/ico_touzi.png" alt="">
+                <img ng-if="accunt.accumulatedIncome>0" src="images/myaccount/ico_touzi1.png" alt="">
+                <p>我的投资</p>
+            </div>
+            <div ui-sref="myCoupon">
+                <img ng-if="accunt.unUseFavourable==0" src="images/myaccount/ico_youhui.png" alt="">
+                <img ng-if="accunt.unUseFavourable>0" src="images/myaccount/ico_youhui1.png" alt="">
+                <p>优惠券</p>
+            </div>
+            <div ui-sref="myTyj">
+                <img ng-if="accunt.experienceAmount==0" src="images/myaccount/ico_tiyanjin.png" alt="">
+                <img ng-if="accunt.experienceAmount>0" src="images/myaccount/ico_tiyanjin1.png" alt="">
+                <p>体验金</p>
+            </div>
+        </div>
+
+
+        <div class="div-fooer">
+            <div ui-sref="myInvitation">我的邀请 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+            <div ui-sref="minxi">我的明细 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+            <div ui-sref="dizhi">收货地址<img src="images/myaccount/ico_jiantou.png" alt=""></div>
+            <div ui-sref="myInfo">安全中心 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+            <div><a href="http://www.aowubao.com">官方网站 <img src="images/myaccount/ico_jiantou.png" alt=""></a> </div>
+            <div ui-sref="weixin({wap:true})" style="border:none">微信公众号 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+        </div>
+        <!-- 
+        <div class="zhezhaoceng" ng-show="bombBox" ng-click="bomb()">
+            <img src="images/myaccount/zhezhaocengTyj.png" alt="">
+        </div> -->
+        <!-- <table class="myaccount-mod">
+
+		<div class="div-fooer">
+			<div ui-sref="myInvitation">我的邀请 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div ui-sref="minxi">我的明细 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div ui-sref="myInfo">安全中心 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div><a href="http://www.aowubao.com">官方网站 <img src="images/myaccount/ico_jiantou.png" alt=""></a> </div>
+			<div ui-sref="weixin({wap:true})" style="border:none">微信公众号 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+		</div>
+		<!-- <table class="myaccount-mod">
+
+		<div class="div-fooer">
+			<div ui-sref="myInvitation">我的邀请 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div ui-sref="minxi">我的明细 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div ui-sref="dizhi">我的收货地址<img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div ui-sref="myInfo">安全中心 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+			<div><a href="http://www.aowubao.com">官方网站 <img src="images/myaccount/ico_jiantou.png" alt=""></a> </div>
+			<div ui-sref="weixin({wap:true})" style="border:none">微信公众号 <img src="images/myaccount/ico_jiantou.png" alt=""></div>
+		</div>
+		<!-- <table class="myaccount-mod">
+
+			<tr>
+				<td width="33%" ui-sref="myCoupon">
+					<img src="images/myaccount/ico_red.png">
+					<p>优惠券</p>
+				</td>
+				<td width="34%" ui-sref="myTyj">
+					<img src="images/myaccount/ico_tyj.png" style="width:30%;">
+					<p>体验金<br ng-if="accunt.experienceAmount>0"><span ng-if="accunt.experienceAmount>0" style="color:#ff6400;font-size:0.9rem;">{{accunt.experienceAmount | number:0 }}元</span></p>
+				</td>
+				<td width="33%" ui-sref="myInvitation">
+					<img src="images/myaccount/ico_invite.png" style="width:30%;">
+					<p>我的邀请</p>
+				</td>
+			</tr>
+			<tr>
+				<td ui-sref="myInfo">
+					<img src="images/myaccount/ico_data.png">
+					<p>我的信息</p>
+				</td>
+				<td ui-sref="myInvest">
+					<img src="images/myaccount/ico_invest.png">
+					<p>我的投资</p>
+				</td>
+				<td ui-sref="minxi">
+					<img src="images/myaccount/ico_detail.png">
+					<p>我的明细</p>
+				</td>
+			</tr>
+		</table> -->
+        <!-- <div class="pull-out" ng-click="out('out')">
+			<a>退出</a>
+		</div> -->
+    </div>
+</div>

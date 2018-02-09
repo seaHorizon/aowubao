@@ -1,0 +1,119 @@
+<div class="double12Activity" ng-class="{'inviteFriend-bottom':ftype==1,'double12Activity-bottom':ftype==2}">
+    <h1 ui-sref="main.home"></h1>
+    <img class="banner" style="width:100%;" src="images/activity/double12/banner.png">
+    <main>
+        <div class="totalMoney">
+            <img src="images/activity/double12/totalMoney_bg.png" alt="">
+            <h3>您在活动期间累计投资的金额</h3>
+            <p><i>￥</i>{{amount || 0}}</p>
+            <div>
+                <span>投资产品领取对应金额礼品 </span><span>详情见活动规则</span>
+            </div>
+        </div>
+        <div class="button-box" ng-click="partake()" ng-show="isEntry&&!isJoin">
+            <!-- 立即参与 -->
+            <img src="images/activity/double12/join.png" alt="">
+        </div>
+        <div class="button-box" ng-show="!isEntry" ng-click="lijidenglu()">
+            <!-- 立即登陆 -->
+            <img src="images/activity/double12/entry.png" alt="">
+        </div>
+        <div class="button-box" ng-show="isJoin" ng-click="jixutouzi()">
+            <!-- 已参与 -->
+            <img src="images/activity/double12/already.png" alt="">
+        </div>
+        <div class="prize">
+            <h3>活动奖品</h3>
+            <img src="images/activity/double12/Prize.png" alt="">
+        </div>
+        <div class="ActivityRules">
+            <div class="Ruletitle">
+                <i></i>
+                <h3>活动规则</h3>
+            </div>
+            <div class="Rulecontent">
+                <ul>
+                    <li>1、活动时间：12月1日-12月15日</li>
+                    <li>2、活动对象：嗷呜宝复投≥60天用户</li>
+                    <li>3、活动说明：
+                        <ol>
+                            <li>活动期间，累计投资≥60天理财产品≥5000元，送100元京东E卡</li>
+                            <li>累计投资≥60天理财产品≥10000元，送200元京东E卡</li>
+                            <li>累计投资≥60天理财产品≥20000元，送飞利浦电动牙刷一支</li>
+                            <li>累计投资≥60天理财产品≥30000元，送小米IH电饭煲 4L版一台</li>
+                            <li>累计投资≥60天理财产品≥50000元，送800元京东E卡</li>
+                            <li>累计投资≥60天理财产品≥80000元，送1200元京东E卡</li>
+                            <li>累计投资≥60天理财产品≥100000元，送小米空气净化器 Pro一台</li>
+                            <li>累计投资≥60天理财产品≥200000元，送小米MIX2手机一部</li>
+                            <li>活动不可与其它优惠同时使用。</li>
+                        </ol>
+                    </li>
+                    <li>4、礼品发放：
+                        <p>用户成功参与并达到领奖条件，我们的客服人员将在三个工作日内与您联系，请保持手机畅通，礼品将在活动结束后的7个工作日内进行统一发放。</p>
+                    </li>
+                </ul>
+                <p>注：①本次活动仅限复投用户（含新手标）参与，活动期间，累计投资≥60天理财产品满相应额度，即可领取对应礼品。</p>
+                <p>②每位投资用户仅可领取一次礼品，礼品发放标准参考活动期间累计的最高投资额(＜60天理财产品金额不累计)。</p>
+
+                <p class="activity-firend-info">本活动最终解释权归嗷呜宝所有，任何疑问请联系嗷呜宝客服</p>
+                <p class="activity-firend-kefu">
+                    <span>客服电话：400-921-0758</span>
+                    <span>客服微信服务号：嗷呜宝</span>
+                </p>
+                <p style="text-align:center;margin-bottom:1rem;margin-top:0.4rem;">*苹果公司（Apple Inc.）非活动赞助商，本活动与苹果公司无关</p>
+                <i class="square"></i>
+                <i class="feather"></i>
+            </div>
+        </div>
+    </main>
+    <!-- 遮罩层 -->
+    <!-- 参与成功 -->
+    <div class="zhezhaoceng" ng-show="mask">
+        <img src="images/activity/double12/success_bg.png" alt="">
+        <i class="close" ng-click="close()"></i>
+        <i class="investment" ng-click="investment()"></i>
+    </div>
+    <!--  -->
+    <!-- 请至少完成一次投资 -->
+    <div class="zhezhaoceng" ng-show="first">
+        <img src="images/activity/double12/success2_bg.png" alt="">
+        <i class="close" ng-click="close1()"></i>
+        <i class="investment" ng-click="investment()"></i>
+    </div>
+
+    <!--底部悬浮-->
+    <!-- <footer class="footer" ng-if="ftype==1">
+        <div>
+            <p class="login">马上登陆&#x3000;邀请领奖！</p>
+        </div>
+        <div class="button-box">
+            <img src="images/activity/double12/login-button.png" ui-sref="dl({returnurl:'double12Activity'})">
+            <a href="aowb://page=4?" ng-if="!wap">
+                <img src="images/activity/double12/login-button.png">
+            </a>
+        </div>
+    </footer> -->
+    <footer class="footer" ng-if="ftype==2">
+        <div>
+            <p class="login">领豪礼&#x3000;乐分享！</p>
+        </div>
+        <div class="button-box">
+            <img ng-click="lijiyaoqing()" src="images/activity/double12/invite-button.png">
+        </div>
+    </footer>
+    <!-- 分享 -->
+    <div class="activity-firend-boxh5" ng-click="closeshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，发送给您的好友注册并投资</p>
+            <textarea id="shareurl" ng-model="shareUrl" class="shareurl">{{shareUrl}}</textarea>
+            <a ng-click="copyShare()" ng-show="!isCopy">复制链接</a>
+            <a ng-show="isCopy" style="color:#999;">{{isCopytext}}</a>
+        </div>
+    </div>
+    <div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+        <img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+    </div>
+
+    <!--icp备案号-->
+    <div class="icpba">沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v{{version}}</div>
+</div>

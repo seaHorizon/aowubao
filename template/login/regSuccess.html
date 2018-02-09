@@ -1,0 +1,43 @@
+<div class="regSuccess">
+    <div class="topbox">
+        <div class="common-head" ui-sref="main.home"><i></i>
+            <p>完成注册</p>
+        </div>
+        <main>
+            <!--<p><span>88888元</span>体验金和<span>688元</span>现金红包</p>-->
+            <!--<p>已经放入您的账户</p>-->
+            <!--<div class="button" ui-sref="main.bankBillList">立即激活</div>-->
+            <div class="successTitle">
+                <h3>恭喜您完成注册</h3>
+                <p>已获得</p>
+                <div class="cash" ng-if="card">
+                    <div ng-if="card.redPacket">
+                        <p>{{card.redPacket}}</p>
+                        <span>现金红包</span>
+                    </div>
+                    <div ng-if="card.cash">
+                        <p>{{card.cash}}</p>
+                        <span>现金</span>
+                    </div>
+                    <div ng-if="card.experience">
+                        <p>{{card.experience}}</p>
+                        <span>体验金</span>
+                    </div>
+                </div>
+            </div>
+            <div class="successContent">
+                <!-- <img src="/images/login/tyjBottom1.png" alt="" class="banner"> -->
+                <div class="positionB" ng-if="banka">
+                    <p>绑卡认证即可额外获得</p>
+                    <p style="color:#fb705b">
+                        <span ng-if="money.cash">{{money.cash}}元现金</span><span ng-if="(money.cash&&money.experience)||(money.redPacket&&money.experience)||(money.cash&&money.redPacket)">+</span><span ng-if="money.experience">{{money.experience}}元体验金</span>
+                        <span ng-if="money.cash&&money.experience&&money.redPacket"><br>+</span><span ng-if="money.redPacket">{{money.redPacket}}元红包</span>
+                    </p>
+                </div>
+                <div class="positionA">
+                    <div class="button" style="margin: 5rem auto;" ng-click="nextStep()">下一步</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

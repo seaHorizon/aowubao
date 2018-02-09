@@ -1,0 +1,78 @@
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 1080px; 
+$Response:true;
+
+@import "compass", "mobile-mixin";
+body{
+	max-width: 750px;
+	width: 100%;
+	margin: 0 auto;
+	font: 12px/1.5 "Microsoft Yahei",arial,tahoma,"Hiragino Sans GB",\5b8b\4f53;
+	color: #323232;
+	background: #f2f2f2;
+}
+
+.sign_box_bottom{
+	background: #fff;
+	border-top: 1px solid #d2d2d2;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	max-width: 750px;
+	@include clearfix;
+	.button{
+		width: 25%;
+		float: left;
+		height: rem-calc(128);
+		padding: rem-calc(10 0 10);
+		i{
+			display: block;
+			margin: 0 auto;
+			&.ico_home{
+				@include rem-sprite("nav/default/*.png", ico_home);
+			}
+			&.ico_account{
+				@include rem-sprite("nav/default/*.png", ico_account);
+			}
+			&.ico_fund{
+				@include rem-sprite("nav/default/*.png", ico_fund);
+			}
+			&.ico_more{
+				@include rem-sprite("nav/default/*.png", ico_more);
+			}
+		}
+		&.selected,&:active{
+			i{
+				&.ico_home{
+					@include rem-sprite("nav/big/*.png", ico_home);
+				}
+				&.ico_account{
+					@include rem-sprite("nav/big/*.png", ico_account);
+				}
+				&.ico_fund{
+					@include rem-sprite("nav/big/*.png", ico_fund);
+				}
+				&.ico_more{
+					@include rem-sprite("nav/big/*.png", ico_more);
+				}
+			}
+		}
+	}
+}
+
+@import "activity";
+@import "appdownload";
+@import "aqbz";
+@import "common";
+@import "coupon";
+@import "dlog";
+@import "home";
+@import "list";
+@import "login";
+@import "minXiLee";
+@import "my";
+@import "myaccount";
+@import "mycashed";
+@import "newhand";
+@import "recharge";
+@import "smrzLee";

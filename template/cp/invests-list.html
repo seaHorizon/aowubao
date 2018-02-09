@@ -1,0 +1,63 @@
+<div class="wrap list-wrapper" ng-controller="controllerCpList">
+    <div class="more-home">
+        优选理财
+        <img ui-sref="main.investsListCategory" src="images/list/headingproject.png" alt="">
+    </div>
+    <!-- <div class="div-data">
+        <ul class="nav nav-pills mb1 my-coupon">
+            <li role="presentation" style="width: 20%" ng-class="{0:'active',1:'',2:'',3:'',4:''}[active]" ng-click="onClick(0)"><a href="">全部</a></li>
+            <li role="presentation" style="width: 20%" ng-class="{0:'',1:'active',2:'',3:'',4:''}[active]" ng-click="onClick(1)"><a href="">15天</a></li>
+            <li role="presentation" style="width: 20%" ng-class="{0:'',1:'',2:'active',3:'',4:''}[active]" ng-click="onClick(2)"><a href="">30天</a></li>
+            <li role="presentation" style="width: 20%" ng-class="{0:'',1:'',2:'',3:'active',4:''}[active]" ng-click="onClick(3)"><a href="">60天</a></li>
+            <li role="presentation" style="width: 20%" ng-class="{0:'',1:'',2:'',3:'',4:'active'}[active]" ng-click="onClick(4)"><a href="">180天</a></li>
+
+        </ul>
+    </div> -->
+
+
+    <div class="normalcplist-content" ng-class="item.status!=5?'finish':''" ng-click="cpDetailGo(item.id)" ng-repeat="item in cpList"
+        infinite-scroll='loadMore(item)' infinite-scroll-distance='2' on-finish-render="callMethod()">
+        <header style="position: relative;">
+            <p>
+                <mian ng-bind="item.fullName"></mian>
+
+                <span ng-if="item.isInterest==1">加息券</span>
+                <span ng-if="item.isCash==1">红包</span>
+                <span ng-if="item.deadline==15">不参与活动</span>
+            </p>
+            <!-- <span ng-if="item.isCash==1">红包</span>
+            <span ng-if="item.isInterest==1">加息券</span> -->
+            <img ng-if="item.deadline==15" src="images/index/bucanyu.png" alt="" style="position: absolute;right:1.23457rem;top: 1.75rem; width:1rem">
+            <!-- <span ng-if="item.isDouble==1">翻倍券</span> -->
+        </header>
+        <main>
+            <div class="part-a">
+                <p class="p_top">
+                    <zdy ng-bind="item.rate"></zdy><span>%</span>
+                    <span class="span_sub" ng-if="item.activityRate>0" ng-bind="'+'+(item.activityRate | number:1)+'%'"></span>
+                    <!-- <span ng-if="item.activityRate>0">%</span> -->
+                </p>
+                <p>历史年化收益率</p>
+            </div>
+            <div class="part-b">
+                <p class="p_top">
+                    <span ng-bind="item.deadline"></span>
+                </p>
+                <p>项目周期(天)</p>
+            </div>
+        </main>
+        <footer>
+            <div class="part-dt">
+                <div class="part-dt-img" ng-style="{'width':'{{ item.pert }}%'}"></div>
+            </div>
+            <span ng-bind="{{ item.pert  }} + '%'"></span>
+        </footer>
+        <!-- <p ng-bind="item.leastaAmount +'元起投&#x3000;|&#x3000;距离购买结束还有'+ {{ item.endTime  }}"></p> -->
+        <p ng-bind="item.leastaAmount+'元起投&#x3000;次日计息&#x3000;多重保障'"></p>
+
+    </div>
+    <div class="rem-rule"></div>
+    <!-- <p ng-if="cpList.length>0" ui-sref="main.investsListCategory">
+        待还款项目，已还款项目&nbsp;>>
+    </p> -->
+</div>

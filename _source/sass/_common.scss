@@ -1,0 +1,436 @@
+p {
+    word-wrap: break-word;
+}
+
+body>a {
+    display: none;
+}
+
+.percentage {
+    width: rem-calc(286);
+    height: rem-calc(14);
+    background: #FFE999;
+    position: relative;
+    @include border-radius(20px);
+    span {
+        height: rem-calc(14);
+        background: #FFC800;
+        @include border-radius(20px);
+        left: 0 !important;
+        top: 0 !important;
+        margin: 0 !important;
+        position: absolute;
+    }
+}
+
+.percentage-box {
+    width: rem-calc(376);
+    i {
+        float: right;
+        color: #ff6400;
+        margin-top: rem-calc(-18);
+        font-size: rem-calc(32);
+    }
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+    max-width: rem-calc(600) !important;
+    font-size: rem-calc(42) !important;
+    width: auto !important;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-close,
+.ngdialog.ngdialog-theme-default .ngdialog-close:before {
+    font-size: rem-calc(42) !important;
+}
+
+.ngdialog-content .error-msg {
+    padding: rem-calc(25 20);
+    text-align: center;
+    font-size: rem-calc(50);
+}
+
+.ngdialog-content .success-msg {
+    padding: rem-calc(25 20);
+    text-align: center;
+    font-size: rem-calc(50);
+    background: #ff6400;
+    color: #fff;
+    border-radius: rem-calc(10);
+    overflow: hidden;
+}
+
+.ngdialog-content main {
+    padding: rem-calc(30) rem-calc(40);
+}
+
+.sub[disabled="disabled"],
+.nouse-btn {
+    background: #bbb !important;
+    color: #ededed !important;
+    cursor: default !important;
+    &:hover {
+        background: #bbb !important;
+    }
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    max-width: 750px;
+}
+
+.loading div {
+    text-align: center;
+    margin-top: 50%;
+    left: 50%;
+    img {
+        width: rem-calc(110) !important;
+        height: rem-calc(110) !important;
+    }
+}
+
+.common-head {
+    height: 3rem;
+    background: #fff;
+    color: #333;
+    width: 100%;
+    max-width: 750px;
+    position: relative;
+    z-index: 5;
+    p {
+        text-align: center;
+        // font-size: rem-calc(64);
+        font-size: 1.18519rem;
+        line-height: rem-calc(125);
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 rem-calc(120);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    i {
+        width: 0.74074rem;
+        height: 1.35802rem;
+        position: absolute;
+        left: rem-calc(56);
+        background: url(../images/zuo.png);
+        // background-size: 26.66667rem 88.12346rem;
+        background-repeat: no-repeat;
+        // @include rem-sprite("myaccount/*.png", return, $spacing: 2px);
+        top: rem-calc(38);
+    }
+    .right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 9;
+        padding-right: rem-calc(56);
+        line-height: rem-calc(138);
+        font-size: rem-calc(52);
+    }
+}
+
+.bot-tips {
+    padding: rem-calc(100 0 70 56);
+    span {
+        font-size: rem-calc(40);
+        color: #333;
+        display: block;
+        padding-bottom: rem-calc(40);
+        i {
+            float: left;
+            @include rem-sprite("recharge/*.png", ico_bulb);
+            margin: rem-calc(9 12 0 0);
+        }
+    }
+    p {
+        font-size: rem-calc(34);
+        color: #999;
+        position: relative;
+        padding: rem-calc(0 0 26 46);
+        line-height: rem-calc(60);
+        i {
+            @include rem-sprite("recharge/*.png", ico_circle);
+            position: absolute;
+            left: rem-calc(23);
+            top: rem-calc(18);
+            background: #999;
+            border-radius: 10px;
+        }
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: rem-calc(46);
+        li {
+            color: #999;
+            font-size: rem-calc(34);
+            line-height: rem-calc(60);
+        }
+    }
+}
+
+.icpba {
+    width: 100%;
+    text-align: center;
+    color: #999999;
+    background-color: #EAEBEC;
+    font-size: 0.7rem;
+    line-height: rem-calc(90);
+}
+
+.rem-rule {
+    width: 5rem;
+    display: none;
+}
+
+.invest-balance-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    .main-box {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 20%;
+        width: 92%;
+        background-color: #FFFFFF;
+        border-radius: rem-calc(10);
+        overflow: hidden;
+        padding: rem-calc(100) 0 rem-calc(80) 0;
+        >img {
+            width: rem-calc(40);
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: rem-calc(30);
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #444444;
+            margin-bottom: rem-calc(50);
+            position: relative;
+            line-height: rem-calc(100);
+            height: rem-calc(100);
+            img {
+                width: rem-calc(60);
+                position: relative;
+                top: rem-calc(13);
+            }
+        }
+        p {
+            font-size: 0.9rem;
+            color: #444444;
+            text-align: center;
+            margin-bottom: rem-calc(70);
+            padding: 0 rem-calc(40);
+        }
+        .button-box {
+            width: 86%;
+            margin: 0 auto;
+            height: rem-calc(100);
+            line-height: rem-calc(100);
+            span {
+                width: 44%;
+                float: left;
+                color: #FF4941;
+                border: 1px solid #FF4941;
+                text-align: center;
+                border-radius: rem-calc(10);
+                font-size: 1.2rem;
+                box-sizing: border-box;
+            }
+            span:nth-of-type(2) {
+                float: right;
+                background-color: #F04848;
+                color: #FFFFFF;
+                border: none;
+            }
+        }
+    }
+}
+
+// 遮罩层
+.mask-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    // display: none;
+}
+
+//活动结束弹框
+.activityEnd {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    top: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    text-align: center;
+    div {
+        position: relative;
+        width: 75%;
+        margin: 0 auto;
+        margin-top: 10rem;
+        img {
+            width: 100%;
+        }
+        a {
+            color: #fced45;
+            font-size: 0.8rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 1.5rem;
+        }
+    }
+}
+
+//提示登陆弹框
+.login-origine {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    top: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    text-align: center;
+    .login-box1 {
+        position: relative;
+        width: 65%;
+        margin: 15rem auto;
+        font-size: 0.8rem;
+        background-color: #de4239;
+        border-radius: 1rem;
+        .close-icon {
+            width: 0.8rem;
+            height: 0.8rem;
+            float: right;
+            background: url('/images/activity/doubleDan/close1.png') no-repeat;
+            background-size: 100%;
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+        }
+        img {
+            width: 40%;
+            margin-top: 1rem;
+        }
+        .prompt {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            p {
+                color: #fced45;
+                margin-bottom: 0.5rem;
+            }
+        }
+        .btn-box1 {
+            overflow: hidden;
+            padding: 0.5rem 0;
+            border-top: 1px solid #c02a26;
+            a {
+                display: inline-block;
+                width: 49%;
+                line-height: 2rem;
+                height: 2rem;
+                font-size: 0.8rem;
+                color: #fff;
+                float: left;
+            }
+            p {
+                color: #fced45;
+                margin: 0.5rem 0;
+            }
+        }
+        .loginClose {
+            border-right: 1px solid #c02a26;
+        }
+        .logining {
+            color: #fced45 !important;
+            border-left: 1px solid #c02a26;
+        }
+    }
+}
+
+//活动规则
+.ruleBox {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    z-index: 60;
+    i {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        background: url('/images/activity/newYear/error.png') no-repeat;
+        background-size: 100%;
+        position: absolute;
+        right: 10%;
+        top: 15%;
+        z-index: 59;
+    }
+    .content {
+        background-color: #fff;
+        width: 80%;
+        position: absolute;
+        top: 15%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: rem-calc(25);
+        padding: rem-calc(40) rem-calc(50) rem-calc(80) rem-calc(50);
+        box-sizing: border-box;
+        // overflow: scroll;
+        // height: 24rem;
+        h2 {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #000;
+            font-weight: 700;
+        }
+        p {
+            font-size: 0.8rem;
+            color: #666666;
+            line-height: rem-calc(60);
+        }
+        ol {
+            li {
+                font-size: 0.8rem;
+                color: #666666;
+                line-height: rem-calc(60);
+            }
+        }
+    }
+}

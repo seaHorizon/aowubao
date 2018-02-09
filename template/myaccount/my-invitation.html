@@ -1,0 +1,77 @@
+<div class="my-invitation-wrapper" ng-controller="myInvitationCtrl">
+	<div class="common-head"><i ng-click="toback()" style="z-index:99"></i>
+		<p>我的邀请</p>
+		<span class="yqjl" ui-sref="myInvitationss({wap:true})">邀请记录</span>
+	</div>
+	<!-- <div class="wxts">
+		<p><span>温馨提示：</span>由于奖励升级，邀请好友统计系统进行了更新，2018 年1月11日之前的邀请记录不再展示，但累计邀请好友的数量和投 资金额不受影响，如有疑问，请咨询客服电话：400-921-0758。</p>
+	</div> -->
+	<!-- <div class="all">
+		<a href="{{data.jumpUrl}}?wap=true"><img src="{{data.banner}}" width="100%"></a>
+	</div> -->
+	<div class="all">
+		<a ui-sref="inviteFriend2({wap:true})"><img src="images/myinvitation/banner.png" width="100%"></a>
+	</div>
+	<div class="tab">
+		<div class="my-info">
+			<div style="border-right: 1px solid #ddd;">
+				<h3>累计邀请好友</h3>
+				<p>{{data.page.total}} 人</p>
+			</div>
+			<div>
+				<h3>我的返现红包(元)</h3>
+				<p>{{data.myFavourableAmount || 0}} 元</p>
+			</div>
+		</div>
+	</div>
+	<div class="table-box">
+		<!-- <table>
+			<tr class="header">
+				<th>被邀请人</th>
+				<th>注册时间</th>
+				<th>是否首投</th>
+			</tr>
+			<tr ng-repeat="item in inviteList">
+				<td>{{item.mobilePhone}}</td>
+				<td>{{item.regTime | date:'yyyy.MM.dd'}}</td>
+				<td>{{ item.isInvest }}</td>
+			</tr>
+		</table> -->
+		<div class="tabs">
+			<div class="header">
+				<div style="text-align: left ">被邀请人</div>
+				<div>注册时间</div>
+				<div style="text-align: right">是否首投</div>
+			</div>
+			<div class="list" ng-repeat="item in inviteList">
+				<div style="width:25%;text-align: left">{{item.mobilePhone}}</div>
+				<div style="width:44%;padding-left:16%">{{item.regTime | date:'yyyy.MM.dd'}}</div>
+				<div style="width:15%;text-align:center">{{ item.isInvest }}</div>
+			</div>
+
+		</div>
+		<div ng-if="inviteList.length<=0">
+			<img src="images/myinvitation/nolist1.png" alt="" width="100%">
+		</div>
+	</div>
+
+	<div class="ljyqhy">
+		<p ui-sref="myInvitations({wap:true})">
+			立即邀请好友
+		</p>
+
+	</div>
+
+	<!--分享弹框-->
+	<!-- <div class="btn-bot" ng-click="share()">立即邀请好友</div>
+
+	<div class="fixed-box" ng-click="closeshare()">
+		<div class="linkurl" ng-click="default($event)">
+			<p>复制以下网址，发送给您的好友注册并投资</p>
+			<textarea>http://m.aowubao.com/zhuce?recommCode={{userOBJ.user.member.mobilephone}}</textarea>
+		</div>
+	</div>
+	<div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+		<img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+	</div> -->
+</div>

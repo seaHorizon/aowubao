@@ -1,0 +1,50 @@
+<div class="my-dizhi" ng-controller="adddizhiController">
+
+	<div class="common-head" ng-click="toback()" style="border-bottom:1px solid #ccc;"><i></i>
+		<p>{{title}}</p>
+	</div>
+
+	<form action="" name="myForm" ng-model="fromregister">
+		<div class="xinzengdizhi">
+			<div class="shouhuoren">
+				<span>收货人</span><input name='userName' type="text" placeholder="请填写收货人姓名" maxlength="15" ng-model="userInfo.name">
+			</div>
+			<div class="xiahuaxian"></div>
+			<div class="shoujihao">
+				<span>联系电话</span><input name='userPhone' type="text" placeholder="请填写手机号码" ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/" minlength="11"
+				 maxlength="11" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" ng-model="userInfo.phone">
+			</div>
+			<div class="xiahuaxian"></div>
+			<div class="xiangxidizhi">
+				<textarea rows="4" name='userAddress' placeholder="请填写详细地址，不少于5个字" minlength="5" ng-model="userInfo.address"></textarea>
+			</div>
+		</div>
+		<div class="acquiescence">
+			<span>设为默认地址</span>
+			<div class="testswitch">
+				<input class="testswitch-checkbox" id="onoffswitch" type="checkbox">
+				<label class="testswitch-label" for="onoffswitch">  
+			<span class="testswitch-inner"></span>  
+			<span class="testswitch-switch"></span>  
+			</label>
+			</div>
+		</div>
+		<div class="save" ng-click="receive(userInfo)">
+			保存
+		</div>
+	</form>
+
+	<div class="prompting" ng-show="reminding">
+		<img src="images/myaccount/errormessage.png" alt="">
+		<p>请输入收货人姓名。</p>
+	</div>
+	<div class="prompting" ng-show="reminding1">
+		<img src="images/myaccount/errormessage.png" alt="">
+		<p>请正确输入手机号码。</p>
+	</div>
+	<div class="prompting" ng-show="reminding2">
+		<img src="images/myaccount/errormessage.png" alt="">
+		<p>请输入详细地址，不少于5个字。</p>
+	</div>
+
+</div>

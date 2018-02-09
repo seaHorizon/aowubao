@@ -1,0 +1,49 @@
+<div ng-controller="kefuCtrl" style="position: relative; padding-bottom:3rem;height: 45rem;">
+    <div class="common-kfzx"><i ng-click="toback()"></i>
+        <p>客服中心</p>
+    </div>
+    <!-- <div class="div-kfzx">
+        <p>邮编：200080</p>
+        <p>客服电话：400-921-0758</p>
+        <p>公司地址：上海市虹口区四川北路1363号壹丰广场28楼</p>
+        <p>工作日：9:00-21:00</p>
+        <p>周末及节假日：9:00-18:00</p>
+        <p></p>
+    </div> -->
+    <div class="kfzx-div">
+        <img src="images/more/kf-touxiang.png" alt="">
+        <div>
+            <p><span>周一至周五</span><img src="images/more/ty.png" alt="">&ensp;9:00~21:00</p>
+            <p><span>周末及节假日</span><img src="images/more/ty.png" alt="">&ensp;9:00~18:00</p>
+        </div>
+        <p>嗷呜在线客服&ensp;&ensp;竭诚为您服务</p>
+    </div>
+
+    <div class="kflist">
+        <p ui-sref="kfzc({wap:true})"><img class="tubiao" src="images/more/1.png" alt="">认证注册<img class="jiantou" src="images/more/fh.png" alt=""></p>
+        <img class="imgs" src="images/more/xuxian.png" alt="">
+        <p ui-sref="kfbz({wap:true})"><img class="tubiao" src="images/more/2.png" alt="">安全保障<img class="jiantou" src="images/more/fh.png" alt=""></p>
+        <img class="imgs" src="images/more/xuxian.png" alt="">
+        <p ui-sref="kftx({wap:true})"><img class="tubiao" src="images/more/3.png" alt="">允许提现<img class="jiantou" src="images/more/fh.png" alt=""></p>
+        <img class="imgs" src="images/more/xuxian.png" alt="">
+        <p ui-sref="kffl({wap:true})"><img class="tubiao" src="images/more/4.png" alt="">投资福利<img class="jiantou" src="images/more/fh.png" alt=""></p>
+        <img class="imgs" src="images/more/xuxian.png" alt="">
+        <p ui-sref="kfjs({wap:true})"><img class="tubiao" src="images/more/5.png" alt="">产品介绍<img class="jiantou" src="images/more/fh.png" alt=""></p>
+        <img class="imgs" src="images/more/xuxian.png" alt="">
+        <p ui-sref="kfwt({wap:true})"><img class="tubiao" style="top:0.6rem" src="images/more/6.png" alt="">热门问题<img class="jiantou" src="images/more/fh.png"
+                alt=""></p>
+    </div>
+    <div class="kf-dibu">
+        <div style="border-right:1px solid #ddd" ui-sref="YJFK({wap:true})">意见反馈</div>
+        <div ng-click="hides()">电话客服</div>
+    </div>
+    <div class="kf-dh" ng-hide="hide">
+        <div>
+            <p>拨打客服电话</p>
+            <p style="color:#000;padding-bottom: 0.8rem;">400-921-0758</p>
+            <p>热线服务时间:9:00~21:00</p>
+            <p>周末节假日:9:00~18:00</p>
+            <div ng-click="hidess()">取消</div>
+        </div>
+    </div>
+</div>

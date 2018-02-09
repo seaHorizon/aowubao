@@ -1,0 +1,78 @@
+<div class="wrap newhand-wrapper">
+    <div class="common-head" ng-click="toback()"><i></i><p>{{title}}</p></div>
+    <div class="newhand-introduce">
+        <div class="newhand-info">
+            <header><img src="images/newhand/header-icon.png" alt="">产品描述</header>
+            <div>
+                <img src="images/newhand/people-icon.png" alt="">
+                <div>
+                    <h3>针对人群</h3>
+                    <p>针对在嗷呜宝注册的新用户</p>
+                </div>
+                <footer></footer>
+            </div>
+            <div>
+                <img src="images/newhand/tedian-icon.png" alt="">
+                <div>
+                    <h3>产品特点</h3>
+                    <p>周期短、收益高！</p>
+                </div>
+                <footer></footer>
+            </div>
+            <div>
+                <img src="images/newhand/rule-icon.png" alt="">
+                <div>
+                    <h3>参与规则</h3>
+                    <p>起投金额100元，仅能购买1次</p>
+                </div>
+                <footer></footer>
+            </div>
+        </div>
+        <div class="newhand-type">
+            <header><img src="images/newhand/header-icon.png" alt="">回款方式</header>
+            <img src="images/newhand/content-type.png" alt="">
+        </div>
+        <div class="newhand-shouyi">
+            <header><img src="images/newhand/header-icon.png" alt="">收益计算</header>
+            <h1>*投资10000元，7天最大收益对比（元）</h1>
+            <img src="images/newhand/content-shouyi.png" alt="">
+            <p>以10,000元举例：</p>
+            <p><span>15%</span>收益，7天后就到手，收益多赚<span>12.46</span>元</p>
+        </div>
+        <div class="newhand-anquan">
+            <header><img src="images/newhand/header-icon.png" alt="">资金安全</header>
+            <div>
+                <img src="images/newhand/icon-anquan1.png" alt="">
+                <div>
+                    <h3>整个交易流程</h3>
+                    <p>嗷呜宝不触碰用户资金</p>
+                </div>
+                <footer></footer>
+            </div>
+            <div>
+                <img src="images/newhand/icon-anquan2.png" alt="">
+                <div>
+                    <h3>严格的风控体系</h3>
+                    <p>确保票据真实、合法、有效；</p>
+                </div>
+                <footer></footer>
+            </div>
+            <div>
+                <img src="images/newhand/icon-anquan3.png" alt="">
+                <div>
+                    <h3>六重还款来源</h3>
+                    <p>保证资金安全</p>
+                </div>
+                <footer></footer>
+            </div>
+        </div>
+    </div>
+    <!--立即投资-->
+    <div class="marT2 button-info newhand-btn" ui-sref="investment" ng-if="(a|isRegister).register && cpObj.newHandInvested==false && cpObj.isInvested==false && cp.status==5">立即投资</div>
+    <!--关注其他项目-->
+    <img class="xsb-warn" src="images/newhand/xsb-warn1.png" alt="" ng-if="cpObj.isNewUser==true && cpObj.fuiouNewHandInvested==true && (a|isRegister).register==true && cp.type==3">
+    <img class="xsb-warn" src="images/newhand/xsb-warn2.png" alt="" ng-if="cpObj.isNewUser==false && (a|isRegister).register==true && cp.type==3">
+    <div ui-sref="main.bankBillList" class="marT2 button-info newhand-btn" ng-if="cpObj.isNewUser==false || (cpObj.isNewUser==true && cpObj.fuiouNewHandInvested==true)">关注其他项目</div>
+    <!--未登录-->
+    <div class="sign_box_bottom newhand-btn" ng-if="!isRegister" ng-click="gologin()">立即登录</div>
+</div>

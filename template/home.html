@@ -1,0 +1,229 @@
+<div class="home-wrapper" ng-controller='controllerHome'>
+    <div class="logo" id="div-logo">
+        <!-- <p class="enter" ng-if="!isLogin"><a href="/dl">登录</a><span>|</span><a href="/zhuce">注册</a></p>
+        <p class="info" ng-if="isLogin" ui-sref="main.myaccountHome">{{ realInfo | limitTo:3 }}****{{ realInfo | limitTo:-4 }}</p>
+        <img src="images/index/logo.png"> -->
+        <p>精选</p>
+    </div>
+    <!-- banner -->
+    <div class="home-banner">
+        <div class="banner-img">
+            <my-banner banner="banner"></my-banner>
+            <div class="trigger-wrap">
+                <div class="trigger-box"></div>
+            </div>
+        </div>
+    </div>
+    <!--滚动公告-->
+    <!-- 111 -->
+    <div class="notice-box">
+        <img src="images/index/trumpet.png">
+        <div>
+            <ul>
+                <li ui-sref="GGXQ({artiId:item.artiId,wap:true})" ng-repeat="item in gglist">{{item.title}}</li>
+            </ul>
+        </div>
+
+        <!-- <img class="jiantou" src="images/index/11.png" alt=""> -->
+        <div class="jiantou">
+            <img src="images/index/jiantou.png" alt="">
+        </div>
+
+
+    </div>
+    <div class="middle-tab">
+        <div ui-sref="aqbz({wap:true})">
+            <div>
+                <img src="images/index/middle-aqbz2.png" alt="">
+                <div>
+                    <h3>安全保障</h3>
+                </div>
+            </div>
+        </div>
+        <div ui-sref="inviteFriend2({wap:true})">
+            <div>
+                <img src="images/index/middle-invite2.png" alt="">
+                <div>
+                    <h3>邀请好友</h3>
+                </div>
+            </div>
+        </div>
+        <div ui-sref="inviteFriend3({wap:true})">
+            <div>
+                <img src="images/index/middle-yqxr1.png" alt="">
+                <div>
+                    <h3>新手专享</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-cplist">
+        <!--活动模块-->
+        <!-- <div class="activity_modular" ng-if="activity">
+            <p ng-bind="activity.fullName">双十一好礼90天第二期</p>
+            <div class="activity_tz">
+                <header>
+                    {{activity.iphoneLabelArr[0]?activity.iphoneLabelArr[0]:activity.iphoneLabel}}<em ng-if="activity.top1&&activity.iphoneLabelArr[0]">{{activity.top1}}</em>{{activity.iphoneLabelArr[1]?activity.iphoneLabelArr[1]:''}}
+                </header>
+                <main>
+                    <div class="part-a" ng-if="activity.rate>0">
+                        <p>{{activity.rate|number:1}}<span>%</span></p>
+                        <p>历史年化收益率</p>
+                    </div>
+                    <div class="part-b" ng-if="activity.rate>0">
+                        <p>{{activity.deadline}}<span>天</span></p>
+                        <p>产品预期</p>
+                    </div>
+                    <div class="part-c">
+                        <p><em>{{activity.leastaAmount}}元起投</em></p>
+                        <p><em>{{investTotal}}人</em>参与</p>
+                    </div>
+                </main>
+                <p>
+                    <input type="button" ui-sref="cpDetail({pid:activity.id,type:activity.type})" value="立即抢购" ng-if="activity.pert!=100">
+                    <input type="button" value="待开奖" ng-if="activity.pert==100">
+                </p>
+            </div>
+        </div> -->
+        <a href="{{homePageActivity.location}}?wap=true" class="activity_modular">
+            <img src="{{homePageActivity.imgUrl}}" alt="">
+        </a>
+        <!--新手标-->
+        <div ng-if="index.fuiouNewHand" ui-sref="newhandDetail({pid:index.fuiouNewHand.id})" class="home-cpbox-b home-cpbox-newhand">
+            <header>
+                <mian ng-bind="index.fuiouNewHand.fullName"></mian>
+                <!-- <img src="images/index/flame.png" alt=""> -->
+                <span ng-if="index.fuiouNewHandLabel" ng-bind="index.fuiouNewHandLabel"></span>
+            </header>
+            <main style="position: relative;">
+                <div class="part-a">
+                    <p class="p_top">
+                        <zdy ng-bind="index.fuiouNewHand.rate"></zdy><span>%</span>
+                        <span class="span_sub" ng-if="index.fuiouNewHand.activityRate>0" ng-bind="'+'+(index.fuiouNewHand.activityRate)+'%'"></span>
+                        <span ng-if="index.fuiouNewHand.activityRate>0"></span>
+                    </p>
+                    <p>历史年化收益率</p>
+                </div>
+                <div class="part-b">
+                    <!-- <p class="p_top">
+                            立即投资
+                        </p> -->
+                    <p class="data" ng-bind="index.fuiouNewHand.deadline"></p>
+                    <p class="p_bottom">
+                        <!-- <span ng-bind="index.fuiouNewHand.deadline"></span> -->
+                        <span class="spanR">项目周期(天)</span>
+                    </p>
+                </div>
+                <img ng-if="index.fuiouNewHand.deadline==7" src="images/index/bucanyu.png" alt="" style="position: absolute;right: 1.23457rem;top: 0; width:1rem">
+
+            </main>
+            <footer>
+                <div class="btn-box">
+                    <p ui-sref="newhandDetail({pid:index.fuiouNewHand.id})">立即投资</p>
+                </div>
+            </footer>
+        </div>
+        <!-- <p ng-if="index.prudentInvest">精选推荐</p> -->
+
+        <div ng-if="index.prudentInvest" ng-repeat="item in index.prudentInvest" ui-sref="cpDetail({pid:item.id})" class="home-cpbox-b home-cpbox-newhand">
+            <header>
+                <mian ng-bind="item.fullName"></mian>
+                <span>
+                <!-- <span ng-if="item.deadline==15">不参与活动</span> -->
+                <span ng-if="item.isCash==1">红包</span>
+                <span ng-if="item.isInterest==1">加息券</span>
+                <!-- <span ng-if="item.isDouble==1">翻倍券</span> -->
+                </span>
+
+            </header>
+            <main style="position: relative;">
+                <div class="part-a">
+                    <p class="p_top">
+                        <zdy ng-bind="item.rate"></zdy><span>%</span>
+                        <span class="span_sub" ng-if="item.activityRate>0" ng-bind="'+'+(item.activityRate | number:1)+'%'"></span>
+                        <span ng-if="item.activityRate>0"></span>
+                    </p>
+                    <p>历史年化收益率</p>
+                </div>
+                <div class="part-b">
+                    <!-- <p class="p_top">
+                        立即投资
+                    </p> -->
+                    <p class="data" ng-bind="item.deadline"></p>
+                    <p class="p_bottom">
+
+                        <!-- <span ng-bind="item.deadline"></span> -->
+                        <span class="spanR">项目周期(天)</span>
+                    </p>
+                </div>
+                <img ng-if="item.deadline==15" src="images/index/bucanyu.png" alt="" style="position: absolute;right: 1.23457rem;top: 0; width:1rem">
+            </main>
+            <footer>
+                <div class="part-dt">
+                    <div class="part-dt-img" ng-style="{'width':'{{ item.pert }}%'}"></div>
+                </div>
+                <span ng-bind="{{ item.pert  }}+'%'"></span>
+                <p ng-bind="item.leastaAmount+'元起投&#x3000;次日计息&#x3000;多重保障'"></p>
+            </footer>
+        </div>
+        <!-- <p>优选理财</p> -->
+        <!--优选理财-->
+        <!-- <div ui-sref="main.bankBillList" class="home-cpbox-b">
+            <header>
+
+                <span ng-if="index.preferredInvest.isCash==1" style="margin-left: 0">红包</span>
+                <span ng-if="index.preferredInvest.isInterest==1">加息券</span>
+                <span ng-if="index.preferredInvest.isDouble==1">翻倍券</span>
+            </header>
+            <main>
+                <div class="part-a">
+                    <p class="p_top">
+                        <zdy ng-bind="index.preferredInvest.minRate"></zdy><span>%</span>
+                        <span class="span_sub">~</span>
+                        <zdy ng-bind="index.preferredInvest.maxRate"></zdy><span>%</span>
+                    </p>
+                    <p>历史年化收益率</p>
+                </div>
+                <div class="part-b">
+                    <p class="p_top">
+                        立即投资
+                    </p>
+                    <p class="p_bottom">
+                        <span ng-bind="index.preferredInvest.minDeadline+'天'"></span><span class="spanR">项目周期</span>
+                    </p>
+                </div>
+            </main>
+        </div> -->
+    </div>
+    <div class="footer-adv">
+        <div>
+            <img src="images/index/footer-icon-a.png" alt="">
+            <div>
+                <p>严格甄选</p>
+                <p>优质产品</p>
+            </div>
+        </div>
+        <div>
+            <img src="images/index/footer-icon-b.png" alt="">
+            <div>
+                <p>6大还款</p>
+                <p>来源保障</p>
+            </div>
+        </div>
+        <div>
+            <img src="images/index/footer-icon-c.png" alt="">
+            <div>
+                <p>两大知名</p>
+                <p>律所支持</p>
+            </div>
+        </div>
+    </div>
+    <div class="rem-rule"></div>
+
+    <div class="bombBox" ng-show="bomb">
+        <div class="bombContent">
+            <a ng-href="{{popActivity.location}}?wap=true"><img src="{{popActivity.imgUrl}}" alt="" width="100%"></a>
+            <div class="icon" ng-click="close()"></div>
+        </div>
+    </div>
+</div>

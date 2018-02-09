@@ -1,0 +1,91 @@
+<div class="inviteFriend">
+    <img class="banner" style="width:100%;" src="images/activity/inviteFriend1/banner.png">
+    <main>
+        <h1><img src="images/activity/inviteFriend1/main-title.png" alt=""><span ng-click="showRule()">活动规则</span></h1>
+        <section>
+            <p>每邀请一位好友首投定期标<span>≥5000元</span>，</p>
+            <p>你将获得<span>18元</span>现金！</p>
+            <p>同时，好友可获得<span>88888元</span>体验金+<span>688元</span>红包！</p>
+        </section>
+        <div class="img-box">
+            <div>
+                <img src="images/activity/inviteFriend1/friend.png">
+                <h2>邀请好友人数</h2>
+                <p>每位好友首投≥5000元</p>
+            </div>
+            <div>
+                <img src="images/activity/inviteFriend1/multiply-icon.png">
+            </div>
+            <div>
+                <img src="images/activity/inviteFriend1/gold.png">
+                <h2>18元现金</h2>
+                <p>首投成功即可返现</p>
+            </div>
+            <h3></h3>
+        </div>
+        <div class="top-ten">
+            <div class="title">
+                <img src="images/activity/inviteFriend1/topTen-title.png">
+            </div>
+            <div class="list-box">
+                <ul>
+                    <li ng-repeat="item in repeatInvestList">
+                        <span>第 {{item.rownum}} 名</span>
+                        <span>{{item.mobilePhone}}</span>
+                        <span>已获得 {{item.amount}} 元返现</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <div class="rule-box">
+        <div class="content" style="width:87%;">
+            <h1>活动规则</h1>
+            <ol>
+                <li>1.活动时间：2017年9月11日-2017年11月30日</li>
+                <li>2.活动对象：嗷呜宝所有注册用户</li>
+                <li>3.您邀请的好友在本活动期间内完成首投（在平台第一次投资，且金额≥5000元的产品），即可获得返现奖励。</li>
+                <li>4.返现只针对好友首次投资的30天、60天、180天期限的标的，投新手标或其他活动标则无返现。</li>
+                <li>5.当您的好友完成首投后，系统将自动发放对应额度的返现红包至您的平台账户中。</li>
+                <br>
+                <li>*本活动由嗷呜宝发起并就活动内容作出解释和说明，任何疑问请联系嗷呜宝客服：021-26136426转8011</li>
+            </ol>
+            <img ng-click="closeRule()" src="images/activity/inviteFriend1/close-icon.png">
+        </div>
+    </div>
+    <!--底部悬浮-->
+    <footer class="footer" ng-if="ftype==1">
+        <div>
+            <p class="login">马上登陆&#x3000;邀请赚钱！</p>
+        </div>
+        <div class="button-box">
+            <img ng-if="wap" src="images/activity/inviteFriend1/login-button.png" ui-sref="dl({returnurl:'inviteFriend1'})">
+            <a href="aowb://page=4?" ng-if="!wap">
+                <img src="images/activity/inviteFriend1/login-button.png">
+            </a>
+        </div>
+    </footer>
+    <footer class="footer" ng-if="ftype==2">
+        <div>
+            <p class="login">累计获得返现<span> {{rewards}} </span>元</p>
+        </div>
+        <div class="button-box">
+            <img ng-click="lijiyaoqing()" src="images/activity/inviteFriend1/invite-button.png">
+        </div>
+    </footer>
+    <!-- 分享 -->
+    <div class="activity-firend-boxh5" ng-click="closeshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，发送给您的好友注册并投资</p>
+            <textarea id="shareurl" ng-model="shareUrl" class="shareurl">{{shareUrl}}</textarea>
+            <a ng-click="copyShare()" ng-show="!isCopy">复制链接</a>
+            <a ng-show="isCopy" style="color:#999;">{{isCopytext}}</a>
+        </div>
+    </div>
+    <div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+        <img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+    </div>
+    <p>*苹果公司（Apple Inc.）非活动赞助商，本活动与苹果公司无关</p>
+    <!--icp备案号-->
+    <div class="icpba">沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v{{version}}</div>
+</div>

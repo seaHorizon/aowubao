@@ -1,0 +1,42 @@
+<div class="regSuccess">
+    <div class="topbox">
+        <div class="common-head" ui-sref="main.home"><i></i>
+            <p>完成注册</p>
+        </div>
+        <main>
+            <!--<p><span>88888元</span>体验金和<span>688元</span>现金红包</p>-->
+            <!--<p>已经放入您的账户</p>-->
+            <!--<div class="button" ui-sref="main.bankBillList">立即激活</div>-->
+            <div class="successTitle">
+                <h3>恭喜您完成注册</h3>
+                <p>已获得</p>
+                <div class="cash" ng-if="card">
+                    <div ng-if="card.redPacket">
+                        <p>{{card.redPacket}}</p>
+                        <span>现金红包</span>
+                    </div>
+                    <div ng-if="card.cash">
+                        <p>{{card.cash}}</p>
+                        <span>现金</span>
+                    </div>
+                    <div ng-if="card.experience">
+                        <p>{{card.experience}}</p>
+                        <span>体验金</span>
+                    </div>
+                </div>
+            </div>
+            <div class="successContent">
+                <!-- <img src="/images/login/tyjBottom1.png" alt="" class="banner"> -->
+                <div>
+                    <p style="font-size: 1.8rem;color: #fb705b;text-align: center;">下载APP获取更多收益！</p>
+                </div>
+                <div class="positionA">
+                    <div class="button" id="button1" style="margin: 2rem auto 0;font-size:1.5rem;background:#fff;border:1px solid #f7d247;color:#f7d247;" ng-click="downloadclick1()">IOS下载</div>
+                </div>
+                <div class="positionA">
+                    <div class="button" id="button2" style="margin:1rem auto;font-size:1.5rem;background:#fff;border:1px solid #f7d247;color:#f7d247;" ng-click="downloadclick2()">Android下载</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

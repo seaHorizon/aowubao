@@ -1,0 +1,130 @@
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 1080px; 
+$Response:true;
+
+@import "compass", "mobile-mixin";
+body{
+	max-width: 750px;
+	width: 100%;
+	margin: 0 auto;
+	font: 12px/1.5 "Microsoft Yahei",arial,tahoma,"Hiragino Sans GB",\5b8b\4f53;
+	color: #323232;
+	background: #f2f2f2;
+}
+
+
+.sign_box_bottom {
+	background: #fff;
+	border-top: 1px solid #d2d2d2;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	max-width: 750px;
+	overflow: hidden;
+	*zoom: 1;
+  }
+  .sign_box_bottom .button {
+	width: 25%;
+	float: left;
+	height: 3.16049rem;
+	padding: 0.5rem 0 0.24691rem;
+   text-align: center;
+  }
+  .sign_box_bottom .button i {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+  }
+  
+  .sign_box_bottom .button i p {
+	position: absolute;
+	bottom: 0;
+	width: 2rem;
+  }
+  
+  .sign_box_bottom .button i.ico_home, .sign_box_bottom .button i.ico_account, .sign_box_bottom .button i.ico_fund, .sign_box_bottom .button i.ico_more {
+	background: url('../images/nav/default-see3d312d0a1.png');
+	background-size: 2rem 8rem;
+	background-repeat: no-repeat;
+	
+  }
+  .sign_box_bottom .button i.ico_home {
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 0;
+	color: #4d4d4d;
+	
+  }
+  .sign_box_bottom .button i.ico_fund {
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 33.3333%;
+	color: #4d4d4d;
+  }
+  .sign_box_bottom .button i.ico_more {
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 66.66667%;
+	color: #4d4d4d;
+  }
+  .sign_box_bottom .button i.ico_account {
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 100%;
+	color: #4d4d4d;
+  }
+  
+  .sign_box_bottom .button.selected i.ico_home, .sign_box_bottom .button:active i.ico_home, .sign_box_bottom .button.selected i.ico_account, .sign_box_bottom .button:active i.ico_account, .sign_box_bottom .button.selected i.ico_fund, .sign_box_bottom .button:active i.ico_fund, .sign_box_bottom .button.selected i.ico_more, .sign_box_bottom .button:active i.ico_more {
+	background: url('../images/nav/big-sc1936987b9111.png');
+	background-size: 2rem 8rem;
+	background-repeat: no-repeat;
+  }
+  .sign_box_bottom .button.selected i.ico_home, .sign_box_bottom .button:active i.ico_home {
+	// background: url('../images/nav/1.png');
+	// background-size: 100% 100%;
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 0;
+	color: #333333;	
+  }
+  .sign_box_bottom .button.selected i.ico_fund, .sign_box_bottom .button:active i.ico_fund {
+		// background: url('../images/nav/2.png');
+		// background-size: 100% 100%;
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 33.33333%;
+	color: #333333;	
+  }
+  .sign_box_bottom .button.selected i.ico_more, .sign_box_bottom .button:active i.ico_more {
+		// background: url('../images/nav/3.png');
+		// background-size: 100% 100%;
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 66.66667%;
+	color: #333333;	
+  }
+  .sign_box_bottom .button.selected i.ico_account, .sign_box_bottom .button:active i.ico_account {
+		// background: url('../images/nav/4.png');
+		// background-size: 100% 100%;
+	width: 2rem;
+	height: 2rem;
+	background-position: 0 100%;
+	color:  #333333;	
+  }
+
+@import "activity";
+@import "appdownload";
+@import "aqbz";
+@import "common";
+@import "coupon";
+@import "dlog";
+@import "home";
+@import "list";
+@import "login";
+@import "minXiLee";
+@import "my";
+@import "myaccount";
+@import "mycashed";
+@import "newhand";
+@import "recharge";
+@import "smrzLee";

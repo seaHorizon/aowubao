@@ -1,0 +1,48 @@
+<div class="my-info-wrapper my-bank-wrapper" ng-controller="myBankCtrl">
+	<div style="position: relative;" class="common-head"><i ng-click="toback()" style="z-index:9"></i>
+		<p>我的银行卡</p>
+		<span ng-if="canChangeBank == 2" ng-click="isdelete()" class="biangeng">变更</span>
+		<span ng-if="canChangeBank == 1" ng-click="isdeletess()" class="biangeng">变更</span>
+		<span ng-if="canChangeBank == 0" ng-click="isdeletes()" class="biangeng">变更</span>
+	</div>
+	<div class="info-box">
+		<ul>
+			<li class="bank">
+				<p>尾号{{user.bankNum}}</p><span><img src="images/recharge/{{user.bankCode}}.png"></span></li>
+			<li>
+				<p>{{user.realName}}</p><span>姓名</span></li>
+			<li>
+				<p>{{user.idCards}}</p><span>身份证号</span></li>
+			<li>
+				<p>{{user.phone | limitTo:3}}****{{user.phone | limitTo:-4}}</p><span>手机号</span></li>
+		</ul>
+	</div>
+	<!-- <div class="replacebank">
+		<p ng-click="isdelete()">更换银行卡</p>
+	</div> -->
+
+	<div class="masks" ng-show="hide">
+		<div class="deleting">
+			<p>确定更换当前银行卡？</p>
+			<div>
+				<p ng-click='hide = false'>取消</p>
+				<p style="border-left:1px solid #ddd;" ui-sref="certifications">确定</p>
+			</div>
+		</div>
+	</div>
+	<div class="promptingyouhui" ng-show="show">
+		<p style="padding:0 1rem;">所绑定银行卡已全部提现且账户余额为零时,可支持更换银行卡。</p>
+	</div>
+	<div class="promptingyouhui" ng-show="shows">
+		<p style="padding:0 1rem;"> 抱歉！每日限变更一次，请明日再试</p>
+	</div>
+
+	<div class="bot-tips">
+		<span>友情提示<i></i></span>
+		<p><i></i>所绑定银行卡已全部提现且账户余额为零时,可支持更换银行卡</p>
+		<p><i></i>此银行卡为您的充值和取现银行卡，同卡进出不可更改</p>
+		<p><i></i>银行充值单笔限额为{{user.singleQuota}}元</p>
+		<p><i></i>银行充值每日限额为{{user.dayQuota}}元</p>
+		<p><i></i>银行提现单笔限额为500,000元</p>
+	</div>
+</div>

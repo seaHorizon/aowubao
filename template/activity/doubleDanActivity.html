@@ -1,0 +1,319 @@
+<div class="doubleDanActivity">
+    <h1 ui-sref="main.home" ng-if="wap"></h1>
+    <h1 ng-if="!wap"></h1>
+    <img class="banner" style="width:100%;" src="images/activity/doubleDan/banner.png">
+    <main>
+        <div class="doubleDanPrizes">
+            <div class="title">
+                <img src="images/activity/doubleDan/prizes.png" alt="">
+            </div>
+            <h2>活动期间，嗷呜宝注册用户投资相应奖励金额<br>即可兑换相应奖品，畅享双旦好礼！</h2>
+            <div class="iphone">
+                <div class="iphone-left">
+                    <img src="images/activity/doubleDan/jdCard1.png" alt="">
+                </div>
+
+                <div class="iphone-right">
+                    <h3>500元京东礼品卡</h3>
+                    <p>新增投资≥50,000.00元</p>
+                    <p class="qixian">投资期限≥30天</p>
+                    <a href="" ng-click="duihuan(4)">立即兑换</a>
+
+                </div>
+            </div>
+            <div class="box-prizes">
+                <ul>
+                    <li>
+                        <div>
+                            <img src="images/activity/doubleDan/toothbrush.png" alt="" style="width:40.2%;">
+                            <h3>米家声波电动牙刷</h3>
+                            <p>新增投资≥20,000.00元</p>
+                            <p class="qixian">投资期限≥30天</p>
+                            <a href="" ng-click="duihuan(1)">立即兑换</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/activity/doubleDan/jinghuaqi.png" alt="" style="width:20%;">
+                            <h3>小米空气净化器2</h3>
+                            <p>新增投资≥80,000.00元</p>
+                            <p class="qixian">投资期限≥30天</p>
+                            <a href="" ng-click="duihuan(2)">立即兑换</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/activity/doubleDan/sound.png" alt="" style="width:17.2%;">
+                            <h3>小米AI音响</h3>
+                            <p>新增投资≥30,000.00元</p>
+                            <p class="qixian">投资期限≥30天</p>
+                            <a href="" ng-click="duihuan(3)">立即兑换</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/activity/doubleDan/shouhuan.png" alt="" style="width:30.5%;">
+                            <h3>小米手环2&nbsp;限量50个</h3>
+                            <p>新增投资≥5,000.00元</p>
+                            <p class="qixian">投资期限≥30天</p>
+                            <a href="" ng-click="duihuan(0)">立即兑换</a>
+                            <a href="" class="gloomy" ng-if="gloomy">已兑完</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/activity/doubleDan/jdCard2.png" alt="" style="width:66%;">
+                            <h3>100元京东礼品卡</h3>
+                            <p>新增投资≥10,000.00元</p>
+                            <p class="qixian">投资期限≥30天</p>
+                            <a href="" ng-click="duihuan(5)">立即兑换</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/activity/doubleDan/hongbao.png" alt="" style="width:64.5%;">
+                            <h3 class="last">双旦礼包<br>20元话费+8元返现红包</h3>
+                            <p>新增投资≥1,000.00元</p>
+                            <p class="qixian">投资期限≥30天</p>
+                            <a href="" ng-click="duihuan(6)">立即兑换</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="statistics">
+                <h2>我的活动统计表</h2>
+                <div class="isLogin" ng-show="!isEntry">
+                    <a href="aowb://page=4?" ng-if="!wap">登录</a>
+                    <a ui-sref="dl({returnurl:'doubleDanActivity'})" ng-if="wap">登录</a>
+                    <span>查看我当前投资金额</span>
+                </div>
+                <div class="money" ng-show="isEntry">
+                    <div>
+                        <h3>我的投资总金额(元)</h3>
+                        <p>{{totalAmount || 0}}</p>
+                    </div>
+                    <div>
+                        <h3>已兑换奖品金额(元)</h3>
+                        <p>{{usedAmount || 0}}</p>
+                    </div>
+                    <div>
+                        <h3>剩余可兑换金额(元)</h3>
+                        <p>{{surplusAmount || 0}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="record">
+                <div class="record-title">
+                    <p ng-class="{'activity-color-yellow':record,'':!record}" ng-click="recording1()">用户兑奖记录</p>
+                    <i></i>
+                    <p ng-class="{'activity-color-yellow':!record,'':record}" ng-click="recording2()">我的兑奖记录</p>
+                </div>
+
+                <div class="myLottery">
+                    <div class="isLogin" ng-show="!isEntry&&!record">
+                        <a href="aowb://page=4?" ng-if="!wap">登录</a>
+                        <a ui-sref="dl({returnurl:'doubleDanActivity'})" ng-if="wap">登录</a>
+                        <span>查看我的兑奖记录</span>
+                    </div>
+                    <div ng-show="isEntry&&!record">
+                        <div class="myLottery-title">
+                            <h3>时间</h3>
+                            <h3>投资产品</h3>
+                            <h3>奖品</h3>
+                            <h3 class="state">状态</h3>
+                        </div>
+                        <div ng-if="invest" style="font-size:0.8rem;color:#fff;text-align:center;padding:1rem 0;">您还没有兑换过奖品哦，快去投资兑换双旦好礼吧！</div>
+                        <div style="overflow:scroll;height:14rem;width:100%;" ng-if="!invest">
+                            <div class="contents1" ng-repeat="item in crashList">
+                                <div class="timer">
+                                    <p>{{item.addTime |date:'yyyy-MM-dd'}}</p>
+                                </div>
+                                <div class="product">
+                                    <p>投资{{item.investAmount}}元/{{item.investDeadline}}天</p>
+                                </div>
+                                <div class="prize">
+                                    <p>{{item.giftName}}</p>
+                                    <!-- <span style=" position: absolute;right: 0;bottom: 0;">...</span> -->
+                                </div>
+                                <div class="state">
+                                    <p ng-if="item.status==0">已领取</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="otherLottery" ng-show="record">
+                    <div class="otherLottery-title">
+                        <h3>中奖时间</h3>
+                        <h3>中奖号码</h3>
+                        <h3>中奖奖品</h3>
+                    </div>
+                    <div class="crashList">
+                        <div class="wraps">
+                            <div class="contents2" ng-repeat="item in crashList">
+                                <div class="timer">
+                                    <p>{{item.addTime |date:'yyyy-MM-dd'}}</p>
+                                </div>
+                                <div class="prize">
+                                    <p>{{item.mobilePhone |limitTo:3}}****{{item.mobilePhone | limitTo:-4}}</p>
+                                </div>
+                                <div class="tel">
+                                    <p>{{ item.giftName }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rule-box">
+            <h2>奖励规则</h1>
+                <p>活动时间：2017年12月18日—2018年1月8日</p>
+                <p>活动对象：嗷呜宝注册用户</p>
+                <ol>
+                    <li>1、活动期间，用户通过本页面投资满足相应条件，即可兑换相应奖品；</li>
+                    <li>2、小米手环2为限量奖品，按照最先完成满足条件的投资订单进行发放，奖品以具体采购时间发放，若出现供货不足情况，请耐心等待（奖品不提供发票）；兑换成功后请填写正确的收货地址，以确保奖品派发成功；</li>
+                    <li>3、兑奖投资额按照用户活动期间累计新增投资金额进行统计，每兑换一次奖品将扣除当次兑换额度；</li>
+                    <li>4、请在活动结束前在活动页面，点击“立即兑换”按钮进行奖品兑换，以免出现活动过期，奖品不能及时兑换的问题；一旦确定兑换奖品后，兑换奖品不能更改，兑换后相关兑换的奖品可在站内信中进行查看；</li>
+                    <li>5、用户成功兑换礼品后，我们将在活动结束后7个工作日内将礼品统一寄出，8元返现红包（投资≥30天产品满1000元可使用，有效期3天）在完成达标投资后即发放至用户账号，用户可在登录后“我的-优惠券”中查看和使用获得的红包；</li>
+                    <li>6、本次活动不与其它活动同享（使用红包的投资额不计入可兑换金额），本公司员工不可参与本次活动。</li>
+                </ol>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>本活动最终解释权归嗷呜宝所有，任何疑问请联系嗷呜宝客服</p>
+            <p>客服电话：400-921-0758 客服微信服务号：嗷呜宝</p>
+            <p>*苹果公司（Apple lnc.)非活动赞助商，本活动与苹果公司无关</p>
+            <div class="icpba-doubleEgg">沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v{{version}}</div>
+            <img src="images/activity/doubleDan/footer.png" alt="">
+        </div>
+    </footer>
+    <div class="btn-footer">
+        <div class="btn-touzi" ng-click="lijitouzi()">
+            <a href="">立即投资</a>
+        </div>
+        <div class="btn-box" ng-click="lijiyaoqing()">
+            <a href="" style="background-color:#f4760f;">立即分享</a>
+        </div>
+    </div>
+    <!-- 分享 -->
+    <div class="activity-firend-boxh5" ng-click="closeshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，发送给您的好友注册并投资</p>
+            <textarea id="shareurl" ng-model="shareUrl" class="shareurl">{{shareUrl}}</textarea>
+            <a ng-click="copyShare()" ng-show="!isCopy">复制链接</a>
+            <a ng-show="isCopy" style="color:#999;">{{isCopytext}}</a>
+        </div>
+    </div>
+    <div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+        <img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+    </div>
+    <!-- 遮罩层 -->
+    <!-- 活动结束 -->
+    <div class="activityEnd" ng-show="!activityIng">
+        <div>
+            <img src="images/activity/doubleDan/activityEnd.png" alt="">
+            <a ui-sref="main.home" ng-if="wap">我知道了</a>
+            <a href="aowb://page=1?" ng-if="!wap">我知道了</a>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="login" ng-show="isJoin">
+        <div class="login-box1">
+            <i class="close-icon" ng-click="toBack()"></i>
+            <img src="images/activity/doubleDan/santaClaus.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="font-weight:700">亲&nbsp;您还没有登录</p>
+                <p style="font-size:0.6rem;">请登录后再参与活动~</p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="toBack()">关闭</a>
+                <a href="aowb://page=4?" ng-if="!wap" class="logining">登录</a>
+                <a ui-sref="dl({returnurl:'doubleDanActivity'})" ng-if="wap" class="logining">登录</a>
+            </div>
+        </div>
+    </div>
+    <!-- 领取成功 -->
+    <div class="login" ng-show="isSuccess">
+        <div class="login-box1">
+            <i class="close-icon" ng-click="close1()"></i>
+            <img src="images/activity/doubleDan/santaClaus.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="font-weight:700">恭喜您！</p>
+                <p style="font-size:0.6rem;">礼包已领取成功~</p>
+            </div>
+            <div class="btn-box1">
+                <p ng-click="close1()">知道啦</p>
+                <!-- <a href="aowb://page=4?" ng-if="!wap" class="logining">登录</a>
+                <a ui-sref="dl({returnurl:'doubleDanActivity'})" ng-if="wap" class="logining">登录</a> -->
+            </div>
+
+        </div>
+    </div>
+    <!-- 确认兑换 -->
+    <div class="login" ng-show="isConfirm">
+        <div class="login-box1">
+            <i class="close-icon" ng-click="back()"></i>
+            <img src="images/activity/doubleDan/santaClaus.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="line-height:normal;">
+                    <span>投资期限≥{{investDeadline}}天</span>
+                    <span>新增投资≥{{investAmount}}元的</span><br>
+                    <span>{{giftName}}</span><br>
+                    <span>您确定兑换吗？</span><br>
+                </p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="back()">关闭</a>
+                <a href="" class="logining" ng-click="confirm()">确定</a>
+            </div>
+        </div>
+    </div>
+    <!-- 提示未达到兑换条件 -->
+    <div class="login" ng-show="isAchieve">
+        <div class="login-box1">
+            <i class="close-icon" ng-click="close2()"></i>
+            <img src="images/activity/doubleDan/santaClaus.png" alt="">
+            <div class="prompt">
+                <p style="line-height:normal;padding:0.5rem 0;">
+                    <span>投资期限≥{{investDeadline}}天</span>
+                    <span>新增投资≥{{investAmount}}元的</span><br>
+                    <span>{{giftName}}</span><br>
+                </p>
+            </div>
+            <div class="btn-box1">
+                <p>对不起，您尚未达到兑换条件!</p>
+            </div>
+        </div>
+    </div>
+    <!-- 信息填写 -->
+    <div class="information" ng-show="usedImformation">
+        <div class="info-content" id="info-content">
+            <form action="" ng-model="fromregister" name="myForm" novalidate="">
+                <div class="tel-box">
+                    <label for="">领奖人姓名</label>
+                    <input type="text" ng-model="login.name" required name="fullName">
+                </div>
+                <div class="tel-box">
+                    <label for="">手&nbsp;机&nbsp;号&nbsp;码&nbsp;</label>
+                    <input name="mobilephone" type="text" ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/" ng-model="login.mobilephone" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')"
+                        ng-mouseOut="userNameShowError=true" ng-mouseOver="userNameShowError=fasle" ng-blur="blurID('focusMobilephone',myForm)"
+                        minlength="11" maxlength="11" required>
+                    <p ng-show="!myForm.mobilephone.$valid && userNameShowError" style="font-size:0.8rem;margin-top:0.5rem;" ng-cloak class="error">
+                        <font color="#7a1213">手机号码错误</font>
+                    </p>
+                </div>
+                <div class="tel-box">
+                    <label for="">收&nbsp;货&nbsp;地&nbsp;址&nbsp;</label>
+                    <input type="text" ng-model="login.address" name="address" required>
+                </div>
+                <div class="btn-receive">
+                    <a href="" style="margin-right:1rem;margin-left:5rem" ng-click="cancel()">取消</a>
+                    <a href="" style="margin-left:2rem;background:#ffba00" ng-click="receive(myForm)">确认领取</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--icp备案号-->
+</div>

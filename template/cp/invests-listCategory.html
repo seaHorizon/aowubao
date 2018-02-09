@@ -1,0 +1,52 @@
+<div class="wrap list-wrapper" ng-controller="ListCategoryCtrl" data-ng-init="load()">
+    <div class="more-home">
+        <i ng-click="toback()"></i> 往期项目
+    </div>
+    <div class="common-head titile_list">
+        <!-- <i ng-click="toback()"></i> -->
+        <p>
+            <span ng-class="{'titleCheck':Obj.selectStatu}" ng-click="clickTab(6)">待还款</span>
+            <span ng-class="{'titleCheck':!Obj.selectStatu}" ng-click="clickTab(9)">已还款</span>
+        </p>
+    </div>
+    <div class="paddingTop">
+        <!--ui-sref="cpDetail({pid:item.id})"-->
+        <div class="normalcplist-content" ng-class="item.status!=5?'finish':''" ng-click="cpDetailGo(item.id)" ng-repeat="item in cpList"
+            infinite-scroll='loadMore(item)' infinite-scroll-distance='2' on-finish-render="callMethod()">
+            <header>
+                <p ng-bind="item.fullName"></p>
+                <!-- <strong ng-bind="item.fullName"></strong> -->
+                <!-- <span ng-if="item.isCash==1">红包</span>
+                <span ng-if="item.isInterest==1">加息券</span> -->
+            </header>
+            <main>
+
+                <div class="part-a">
+                    <p class="p_top">
+                        <zdy ng-bind="item.rate"></zdy><span>%</span>
+                        <span class="span_sub" ng-if="item.activityRate>0" ng-bind=" '+'+{{ item.activityRate | number:1 }} +'%'"></span>
+                        <span ng-if="item.activityRate>0"></span>
+                    </p>
+                    <p>历史年化收益率</p>
+                </div>
+                <div class="part-b">
+                    <p class="p_top">
+                        <span ng-bind="item.deadline"></span>
+                        <!-- <span> 天</span> -->
+                    </p>
+                    <p>项目周期(天)</p>
+                </div>
+                <img ng-if=" item.isInvest>0 " src="images/list/ico_yitou.png" alt="">
+                <!-- <div class="part-c">
+                    <div data-progress="{{item.pert | setProgress}}" progress-circle></div>
+                    <p ng-if="item.status==5" style="color:#FFC800;">去抢购</p>
+                    <p ng-if="item.status==6">抢完了</p>
+                    <p ng-if="item.status==8">待还款</p>
+                    <p ng-if="item.status==9">已还款</p>
+                </div> -->
+            </main>
+            <!-- <p ng-bind="item.leastaAmount+'元起投&#x3000;|&#x3000;次日计息&#x3000;|&#x3000;多重保障'"></p> -->
+        </div>
+    </div>
+    <div class="rem-rule"></div>
+</div>

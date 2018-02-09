@@ -1,0 +1,27 @@
+<div class="regSuccess">
+    <div class="topbox">
+        <div class="common-head" ui-sref="main.home"><i></i>
+            <p>完成绑卡</p>
+        </div>
+        <main>
+            <div class="successTitle">
+                <h3>恭喜您完成绑卡</h3>
+                <div class="cash" style="color:#fff;font-size:3rem;margin-top:9rem;">
+                    ￥
+                </div>
+            </div>
+            <div class="successContent">
+                <div class="positionB" ng-if="money">
+                    <p>您已获得</p>
+                    <p style="color:#fb705b">
+                        <span ng-if="money.cash">{{money.cash}}元现金</span><span ng-if="(money.cash&&money.experience)||(money.redPacket&&money.experience)||(money.cash&&money.redPacket)">+</span><span ng-if="money.experience">{{money.experience}}元体验金</span>
+                        <span ng-if="money.cash&&money.experience&&money.redPacket">+</span><span ng-if="money.redPacket">{{money.redPacket}}红包</span>
+                    </p>
+                </div>
+                <div class="positionA">
+                    <div class="button" style="margin: 5rem auto;" ui-sref="main.home">确认</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

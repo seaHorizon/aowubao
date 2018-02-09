@@ -1,0 +1,268 @@
+<div class="warmSpring">
+    <header>
+        <h1 ui-sref="main.home" ng-if="wap"></h1>
+        <h1 ng-if="!wap"></h1>
+        <!-- <p class="timer">活动时间：2018年2月1日-2018年2月28日</p> -->
+        <p class="guanggao"><span class="guanggaoBorder">广告</span><span class="guanggaoyu">投资有风险，理财需谨慎</span></p>
+        <div class="rule-btn" ng-click="activityRule()">
+            <span>活动<br>规则</span>
+        </div>
+        <div class="myRecord" ng-click="showRecord()">
+            <span>兑奖<br>记录</span>
+        </div>
+    </header>
+    <section>
+        <div style="font-size:0;"><img class="banner" style="width:100%;display: block;" src="images/activity/warmSpring/banner.png"></div>
+        <div class="firstStep">
+            <div class="firstGift">
+                <img src="images/activity/warmSpring/firstGift.png" alt="">
+            </div>
+            <div class="otherRecord">
+                <i></i>
+                <div>
+                    <ul class="wraps">
+
+                        <li ng-repeat="item in crashList" class="contents2"><span>恭喜{{item.mobilePhone |limitTo:3}}****{{item.mobilePhone | limitTo:-4}}在{{item.addTime |date:'yyyy年MM月dd日'}}成功领取{{item.giftName}}礼！</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="prize">
+                <img src="images/activity/warmSpring/gift.png" alt="">
+            </div>
+            <div class="rule-intro">
+                <p>活动期间，嗷呜宝注册用户投资≥30天产品可获得财富值，</p>
+                <p>使用财富值即可领取现金好礼，还可冲击排行榜，赢得更多好礼！</p>
+            </div>
+        </div>
+        <div class="gift-box">
+            <ul>
+                <li ng-repeat="item in activityGift track by $index">
+                    <div class="top">
+                        <div>{{item.giftName}}</div>
+                        <div>{{item.investAmount}}财富值</div>
+                        <div ng-click="lijiduihuan1(item)">领取</div>
+                        <div ng-show="item.showInfo" ng-click="hideWealthValue(item)">收起详情</div>
+                        <div ng-show="!item.showInfo" ng-click="showWealthValue(item)">查看详情</div>
+                    </div>
+                    <div class="info" ng-show="item.showInfo">
+                        <div class="left">{{item.investAmount}}财富值=</div>
+                        <div class="right">
+                            <p><span class="value">{{item.oneMessageProductList[$index]}}</span>
+                                <span class="moneyList">{{item.oneMessageMoneyList[$index]}}</span></p>
+                            <p><span class="value">{{item.oneMessageProductList1[$index]}}</span>
+                                <span class="moneyList">{{item.oneMessageMoneyList1[$index]}}</span></p>
+                            <p><span class="value">{{item.oneMessageProductList2[$index]}}</span>
+                                <span class="moneyList">{{item.oneMessageMoneyList2[$index]}}</span></p>
+                            <p><span class="value">{{item.oneMessageProductList3[$index]}}</span>
+                                <span class="moneyList">{{item.oneMessageMoneyList3[$index]}}</span></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ActivityStatistics">
+            <div class="Activity-title">
+                <img src="images/activity/warmSpring/statistics.png" alt="">
+            </div>
+            <div class="statistics">
+                <div class="isLogin" ng-show="!isEntry">
+                    <a href="" ng-click="loginIng()">登录</a>
+                    <span>查看我的财富值</span>
+                </div>
+                <div class="money" ng-show="isEntry">
+                    <div>
+                        <h3>活动期间累计财富值</h3>
+                        <p>{{totalAmount || 0}}</p>
+                    </div>
+                    <div>
+                        <h3>已兑换财富值</h3>
+                        <p>{{usedAmount || 0}}</p>
+                    </div>
+                    <div>
+                        <h3>剩余可兑换财富值</h3>
+                        <p>{{surplusAmount || 0}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="secondStep">
+            <div class="firstGift">
+                <img src="images/activity/warmSpring/secondGift.png" alt="">
+            </div>
+            <div class="rule-intro" style="border:1px solid #ffcf4c;text-align:left;">
+                <p>活动期间累计获得的财富值还可冲击活动排行榜，赢取更多现金好礼，排行榜以活动截止时的数据为准，活动期间累计财富值最多的前10名可获得额外 的现金好礼。若多个用户活动期间的财富值相同，按照获得时间的先后排序。
+                </p>
+            </div>
+            <div class="rankingList">
+                <div class="awardList_title">
+                    <img src="images/activity/warmSpring/award-title.png" alt="">
+                </div>
+                <div class="awardList_content">
+                    <div class="awardList_title">
+                        <h3 style="width:16%;">排名</h3>
+                        <h3>姓名</h3>
+                        <h3 style="width:25%;">手机号</h3>
+                        <h3 style="width:25%;">财富值</h3>
+                        <h3 style="width:16%;">奖励</h3>
+                    </div>
+                    <div class="awardList_detail" ng-repeat="item in wealthList track by $index" ng-class="{0:'rank-first',1:'rank-second',2:'rank-third'}[{{$index}}]">
+                        <p style="width:16%;">{{$index+1}}</p>
+                        <p>{{item.realname}}</p>
+                        <p style="width:25%;">{{item.mobilePhone}}</p>
+                        <p style="width:25%;">{{item.totalAmount}}</p>
+                        <p style="width:16%;">{{item.cashAward}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="footer-info">
+        <p><span>本活动最终解释权归嗷呜宝所有，任何疑问请联系嗷呜宝客服</span></p>
+        <p><span>客服电话：400-921-0758 客服微信服务号：嗷呜宝</span></p>
+        <p ng-if="channel==1"><span>*苹果公司(Apple lnc.)非活动赞助商，本活动与苹果公司无关</span></p>
+        <div class="icpba-doubleEgg"><span>沪ICP备17010435号-3 | ©上海傲系金融信息服务有限公司 v{{version}}</span></div>
+    </div>
+
+    <div class="btn-footer">
+        <div class="btn-touzi" ng-click="lijitouzi()">
+            <a href="">立即投资</a>
+        </div>
+        <div class="btn-box" ng-click="lijiyaoqing()">
+            <a href="" style="background-color:#f4760f;">立即分享</a>
+        </div>
+    </div>
+
+    <div class="ruleBox" style="overflow:scroll;z-index:999;" ng-show="showRule">
+        <i ng-click="closeRule()" style=" background: url('/images/activity/warmSpring/error.png') no-repeat;background-size:100%;"></i>
+        <div class="content" style="height: 29rem;">
+            <h2 style="margin-bottom: 0.5rem;">————·活动规则·————</h2>
+            <div style="overflow:scroll;height:25rem;">
+                <p>活动时间：2018年3月9日—2018年3月31日</p>
+                <p>活动对象：嗷呜宝注册用户</p>
+                <ol>
+                    <li>1、活动期间，用户通过本页面投资相应产品可获得财富值，使用财富值即可兑换暖春好礼，同时可累计参与排行榜奖励活动，前十名可获得额外奖励，排行榜奖励参考第一名财富值逐步递增；</li>
+                    <li>
+                        <img src="images/activity/warmSpring/prizeInfo.png" style="width:100%;" alt="">
+                    </li>
+                    <li>2、财富值按照用户活动期间累计投资≥30天产品的新增投资金额进行折算（财富值=3.8×90天产品投资额=2.2×60天产品投资额=1.7×45天产品投资额=1×30天产品投资额），每兑换一次奖品将扣除当次兑换奖品的财富值，财富值将在活动结束后清零；</li>
+                    <li>3、请在活动结束前及时点击“立即兑换”按钮进行奖品兑换，以免出现活动过期，奖品不能及时兑换的问题；一旦确定兑换奖品后，兑换奖品不能更改，兑换后相关兑换的奖品可在站内信中进行查看；</li>
+                    <li>4、活动结束后，我们将在7个工作日内将礼品统一发放，现金奖励将直接发放至您的账户余额，请注意查收；</li>
+                    <li>5、本次活动不可与其它活动同享，不可使用红包，本公司员工不可参与本次活动。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="activity-firend-boxh5" ng-click="closeshareh5()">
+        <div class="h5share" ng-click="default($event)">
+            <p>复制以下网址，发送给您的好友注册并投资</p>
+            <p id="shareurl" style="text-align: left;" ng-bind="shareUrl" ng-if="!flag" class="shareurl">{{shareUrl}}</p>
+            <textarea id="shareurl" ng-model="shareUrl" ng-if="flag" class="shareurl">{{shareUrl}}</textarea>
+            <a ng-click="copyShare()" ng-show="!isCopy&&flag">复制链接</a>
+            <a ng-show="!flag" style="color:#999;">{{isCopytext}}</a>
+            <a ng-show="flag&&isCopy" style="color:#999;">{{isCopytext}}</a>
+        </div>
+    </div>
+    <div class="activity-firend-boxweixin" ng-click="closeshareweixin()">
+        <img src="images/activity/inviteFriend1/sharetext.png" class="sharetext" />
+    </div>
+    <!-- 遮罩层 -->
+    <!-- 活动结束 -->
+    <div class="activityEnd" ng-show="!activityIng">
+
+        <div>
+            <img src="images/activity/warmSpring/activityEnd.png" alt=" ">
+            <a ui-sref="main.home" ng-if="wap" style="color:#fd8e1c">我知道了</a>
+            <a href="aowb://page=1?" ng-if="!wap" style="color:#fd8e1c">我知道了</a>
+        </div>
+    </div>
+    <!-- 提示登录 -->
+    <div class="login-origine" ng-show="isJoin">
+        <div class="login-box1">
+            <img src="images/activity/warmSpring/warmSpring.png" class="imgLogin" alt=" ">
+            <div class="prompt">
+                <p style="font-weight:700">亲&nbsp;您还没有登录</p>
+                <p style="font-size:0.6rem;">请登录后再参与活动~</p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="toBack()">关闭</a>
+                <a href="" ng-click="setPassLogin()" class="logining">登录</a>
+                <!-- <a href="aowb://page=4?" ng-if="!wap" class="logining">登录</a>
+                <a ui-sref="dl({returnurl: 'warmSpring'})" ng-if="wap" class="logining">登录</a> -->
+            </div>
+        </div>
+    </div>
+    <!-- 领取成功 -->
+    <div class="login-origine" ng-show="isSuccess">
+        <div class="login-box1">
+            <img src="images/activity/warmSpring/warmSpring.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="font-weight:700">恭喜您！</p>
+                <p>礼包已兑换成功~</p>
+            </div>
+            <div class="btn-box1">
+                <p ng-click="close1()">知道啦</p>
+            </div>
+        </div>
+    </div>
+    <!-- 确认兑换 -->
+    <div class="login-origine" ng-show="isConfirm">
+        <div class="login-box1">
+            <img src="images/activity/warmSpring/warmSpring.png" class="imgLogin" alt="">
+            <div class="prompt">
+                <p style="line-height:normal;">
+                    <span>您确认兑换{{giftName}}?</span><br>
+                </p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="back()">取消</a>
+                <a href="" class="logining" ng-click="confirm()">兑换</a>
+            </div>
+        </div>
+    </div>
+    <!-- 提示未达到兑换条件 -->
+    <div class="login-origine" ng-show="isAchieve">
+        <div class="login-box1">
+            <img src="images/activity/warmSpring/warmSpring.png" alt="">
+            <div class="prompt ">
+                <p style="line-height:normal;padding:0.5rem 0;">
+                    还差一步就能兑换现金好礼哦！~
+                </p>
+            </div>
+            <div class="btn-box1">
+                <a href="" class="loginClose" ng-click="cancel()">我知道了</a>
+                <a href="aowb://page=2?" ng-if="!wap" class="logining">继续投资</a>
+                <a ui-sref="main.bankBillList" ng-if="wap" class="logining">继续投资</a>
+            </div>
+        </div>
+    </div>
+    <!-- 兑奖记录 -->
+    <div class="awardingRecords" ng-show="record">
+        <div class="awardingRecords-content">
+            <h2>我的兑奖记录</h2>
+            <div class="myLottery">
+                <div class="myLottery-title">
+                    <h3>兑奖时间</h3>
+                    <h3>兑奖奖品</h3>
+                    <h3 class="state">兑奖状态</h3>
+                </div>
+                <div ng-if="invest" style="font-size:0.8rem;color:#fd8c1b;text-align:center;padding:3rem 0 2rem;">您还没有领取过奖励哦，快去投资领取暖春好礼吧！</div>
+                <div style="overflow:scroll;height:9rem;width:100%;margin-top: 4rem;" ng-if="!invest" id="wrap">
+                    <div class="contents1" ng-repeat="item in crashList">
+                        <div class="timer">
+                            <p>{{item.addTime |date:'yyyy-MM-dd'}}</p>
+                        </div>
+                        <div class="prize">
+                            <p>{{item.giftName}}</p>
+                        </div>
+                        <div class="state">
+                            <p>已领取</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="close" ng-click="closeRecord()">关闭</div>
+            </div>
+        </div>
+    </div>
+</div>

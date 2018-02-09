@@ -1,0 +1,57 @@
+<div class="recharge-wrapper" ng-controller="rechargeController">
+    <div class="common-head" ng-click="toback()"><i></i>
+        <p>{{title}}</p>
+    </div>
+    <div class="recharge-wrap">
+        <div class="card-box">
+            <div class="card-info">
+                <img src="images/recharge/newlogo/{{recharge.bankCode}}.png" alt="">
+                <h2>{{recharge.bankName}}</h2>
+                <p>尾号{{recharge.bankNum}}</p>
+            </div>
+            <div class="card-info"><img src="images/recharge/arrow-icon.png" alt=""></div>
+            <div class="card-info">
+                <img src="images/recharge/cg-logo.png" alt="">
+                <h2>可用余额</h2>
+                <p>{{recharge.funds | isNumber}}</p>
+            </div>
+        </div>
+        <div class="recharge-reminder">单笔限额{{recharge.singleQuota/10000}}万，单日限额{{recharge.dayQuota/10000}}万</div>
+        <form name="rechargeForm" ng-submit="submitForm(rechargeForm.$valid)" novalidate>
+            <div class="input-box">
+                <label for="amount">金额</label>
+                <input type="text" class="text sum amount" id="amount" name="amount" ng-model="amount" required onkeyup="this.value=this.value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')"
+                    ng-blur="setAmount(rechargeForm)" autocomplete="off" placeholder="最低充值金额3元" ng-pattern="/^[0-9]+([.]{1}[0-9]+){0,1}$/"
+                    maxlength="12" more3 rechargelimit>
+                <span>元</span>
+                <footer></footer>
+            </div>
+            <div class="cash-info">
+                <table>
+                    <tr>
+                        <td>
+                            <p class="cost">可用余额 {{recharge.funds | currency:''}} 元</p>
+                            <p>充值后余额 <span>{{((amount||0)*1 + recharge.funds) | currency:''}}</span> 元</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="sub-box recharge-sub">
+                <input type="submit" value="下一步" class="sub-btn sub" ng-disabled="rechargeForm.$invalid" />
+            </div>
+        </form>
+        <div class="recharge-bot-tips">
+            <h3>友情提示：</h3>
+            <p>● 充值为即时到账，具体到账时间取决于银行。</p>
+        </div>
+    </div>
+
+    <div class="jiner-zhezhaoceng" ng-if="repairing">
+        <div class="zhezhaoceng">
+            <img src="images/bank/tankuang.png" alt="">
+            <p class="p">抱歉!</p>
+            <p class="p1">银行系统维护中</p>
+            <div ng-click="shutdown()">关闭</div>
+        </div>
+    </div>
+</div>

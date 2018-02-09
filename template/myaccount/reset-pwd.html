@@ -1,0 +1,43 @@
+<div class="tradepwd-wrapper" ng-controller="pwdCtrl">
+    <div class="common-head" ng-click="toback()"><i></i>
+        <p>{{title}}</p>
+    </div>
+    <div class="resetPwdBox">
+        <div class="resetPwdTitle" ng-if="first">
+            <h2>填写验证码</h2>
+            <p>验证码已发送至您的手机号{{mobilePhone}}</p>
+        </div>
+        <div class="resetPwdTitle" ng-if="!first">
+            <h2>重新设置密码</h2>
+        </div>
+        <form name="pwdSetForm" class="resetPwdForm" novalidate ng-submit="submitForm(pwdSetForm.$valid)" autocomplete="off">
+            <div class="pwd-box code-box" ng-if="first">
+                <!-- <a href="" ng-click="getCode()" ng-if="isGetCode == false" class="right">获取验证码</a><span class="right" ng-if="isGetCode == true">{{times}}s重新获取</span> -->
+                <button type="button" class="right" style=" width: 20%;background: #ffc800;border-radius: 1.5rem;padding-right: 0;" ng-click="getCode()">{{times}}秒</button>
+                <input type="text" class="text" placeholder="请输入短信验证码" name="code" ng-model="pwd.code" required onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" minlength="4" maxlength="6">
+                <!-- ng-blur="setInput('code')" -->
+            </div>
+            <div class="pwd-box" ng-show="!first && !showCode">
+                <a href="" class="eye right act" ng-click="showCode = true"></a>
+                <input type="password" name="pwd" class="text" placeholder="请输入新的密码(6-18位数字、字母)" required ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/" ng-model="pwd.pwd" autocomplete="off" ng-blur="setInput('pwd')" maxlength="20">
+                <!-- <span ng-click="showPassword(passwordText)"><img ng-if="!passwordText" src="/images/login/noeye.png"> <img ng-if="passwordText" src="/images/login/eye.png"></span> -->
+            </div>
+            <div class="pwd-box" ng-show="!first && showCode">
+                <a href="" class="eye right" ng-click="showCode = false"></a>
+                <input type="text" name="repwd" class="text" placeholder="" required ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/" autocomplete="off" ng-model="pwd.pwd" ng-blur="setInput('repwd')" maxlength="20">
+            </div>
+            <div class="pwd-box" ng-show="!first && red">
+                <input type="text" class="text" placeholder="请再次输入新密码" required ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/" ng-model="secPwd.pwd" autocomplete="off" ng-blur="setInput('secPwd')" maxlength="20">
+            </div>
+            <div class="pwd-box" ng-if="!red">
+                <p style="color:red;" ng-click="changeRed()">两次输入密码不一致</p>
+            </div>
+            <!-- <div class="little-tip">登录密码为6-18位数字与字母组合</div> -->
+            <div class="sub-box" ng-if="forget == false && first == false"><input type="submit" value="完成" class="sub" ng-disabled="pwdSetForm.$invalid"></div>
+            <div class="sub-box" ng-if="forget == true && first == false"><input type="submit" value="提交" class="sub" ng-disabled="pwdSetForm.$invalid"></div>
+
+            <div class="sub-box" ng-if="first == true"><a href="" class="sub" ng-click="nextStep(pwdSetForm)" ng-disabled="pwdSetForm.code.$invalid">下一步</a></div>
+
+        </form>
+    </div>
+</div>

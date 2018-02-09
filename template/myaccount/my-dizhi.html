@@ -1,0 +1,51 @@
+<div class="my-dizhi" ng-controller="dizhiController">
+
+	<div class="common-head" ng-click="toback()" style="border-bottom:1px solid #ccc;"><i></i>
+		<p>{{title}}</p>
+	</div>
+	<div class="div-dizhi">
+		<!-- 没有收货地址显示 -->
+		<div class="div-kong" ng-if="index.addressInfo.length == 0 ">
+			<img src="images/myaccount/dizhi.png" alt="">
+			<p>暂无收货地址,请添加</p>
+		</div>
+		<!-- 有收货地址显示 -->
+		<div class="div-address" ng-repeat="item in index.addressInfo" ng-if="index.addressInfo.length !=0 ">
+			<div class="div-list">
+				<p class="name">{{item.name}}</p>
+				<p class="phone">{{ item.phone}}</p>
+				<p class="address">{{ item.address }}</p>
+			</div>
+			<div class="options">
+				<!-- <span class="acquiescence">
+					<img src="images/myaccount/morendizhi1.png" alt="" width="18px" ng-if="!item.status" ng-click='setDefaltAdd(item)'> <img  ng-click='setDefaltAdd(item)' src="images/myaccount/morendizhi.png" alt="" width="18px" ng-if="item.status">默认地址
+				</span> -->
+				<span class="acquiescence" ng-if="!item.status">
+					<img src="images/myaccount/morendizhi1.png" alt=""   ng-click='setDefaltAdd(item)'>
+					<span>设为默认</span>
+				</span>
+				<span class="acquiescence yellow" ng-if="item.status">
+					<img  ng-click='setDefaltAdd(item)' src="images/myaccount/morendizhi.png" alt="" style="width:'1rem';"  >
+					<span>默认地址</span>
+				</span>
+				<span class="deleting" ng-click="isdelete(item.id)"><img src="images/myaccount/icon-sc.png" alt="" width="20px"><span>删除</span></span>
+				<span class="edit" ng-click='editAddress(item)'><img src="images/myaccount/icon-jb.png" alt="" width="20px" ><span>编辑</span></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="add-dizhi" ui-sref="adddizhi({wap:true})">
+		<p>新增收货地址</p>
+	</div>
+
+	<div class="mask" ng-show="hide">
+		<div class="deleting">
+			<p>确定要删除改地址吗？</p>
+			<div>
+				<p ng-click='hide = false'>取消</p>
+				<p style="border-left:1px solid #ddd;" ng-click="delete()">确定</p>
+			</div>
+		</div>
+	</div>
+
+</div>

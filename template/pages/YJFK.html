@@ -1,0 +1,15 @@
+<div class="wrap newhand-wrapper" ng-controller="YJFKController">
+	<div class="common-head" ui-sref="kefu({wap:true})"><i></i>
+		<p>意见反馈</p>
+	</div>
+	<div class="wap-xxfk-box">
+		<textarea id="txt" ng-keyup="shuru()" type="text" ng-model="content" placeholder="嗷呜宝力求向您提供优质,高效的服务，请您留下宝贵建议... " maxlength="200"></textarea>
+		<p style="padding:3% 5%;text-align: right;">{{ len }}/200</p>
+	</div>
+	<div class="div-btn" ng-click="toSub()">
+		提交
+	</div>
+	<div class="yijian" ng-if="hide">
+		请留下您的宝贵意见
+	</div>
+</div>

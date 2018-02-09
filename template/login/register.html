@@ -1,0 +1,135 @@
+<div class="register-wrapper" ng-controller='controllerRegister'>
+    <div class="common-head" ui-sref="main.home"><i></i>
+        <p>{{title}}</p>
+    </div>
+    <form ng-show="!isExit" class="wap-login-box ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="fromregister" name="myForm" novalidate="">
+        <div class="register-content">
+
+            <div class="registerDiv" ng-if="!isRegSucess">
+                <div class="phonetitle">{{phonetitle}}</div>
+                <div class="telPhone" ng-class="{'oraLine':myForm.mobilephone.$valid,'redLine':isCommon==1,' ':isCommon==0}">
+                    <!--普通-->
+                    <img class="phoneImg" ng-show="isCommon==0 &&!myForm.mobilephone.$valid" src="/images/login/mbIcon1.png" />
+                    <!--错误-->
+                    <img class="phoneImg" ng-show="isCommon==1 && !myForm.mobilephone.$valid" src="/images/login/mbIcon3.png" />
+                    <!--正确-->
+                    <img class="phoneImg" ng-show="myForm.mobilephone.$valid" src="/images/login/mbIcon2.png" />
+                    <input type="text" name="mobilephone" ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/" placeholder="请输入手机号码" ng-keyup="adc()" ng-model="login.mobilephone" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" minlength="11" maxlength="11" required>
+
+                </div>
+                <button class="next-btn" ng-click="nextStep(myForm)" ng-disabled='!myForm.mobilephone.$dirty || !myForm.mobilephone.$valid'>下一步</button>
+                <p class="agree">点击“下一步”，即表示您同意<a ng-class="{'agreeRules':myForm.mobilephone.$valid}" href="http://www.aowubao.com/zc">《嗷呜宝注册协议》</a></p>
+            </div>
+            <div class="setPwd" ng-if="isRegSucess">
+                <div class="yzmBox" ng-class="{'oraLine':myForm.picCode.$valid}">
+                    <p class="changeImg"><a ng-click="clickInput($event)">看不清，换一张</a></p>
+                    <img ng-show="!myForm.picCode.$valid" src="/images/login/yzmIcon.png" />
+                    <img ng-show="myForm.picCode.$valid" src="/images/login/yzmIcon1.png" />
+                    <span class="img-box"><img  src="/login/validateCode2.dos"></span>
+                    <!--<span class="img-box"><img ng-click="clickInput($event)" src="/login/validateCode2.dos"></span>-->
+                    <input id="imgcode" class="imgCode" ng-class="{'yellowClass':myForm.picCode.$valid}" type="text" placeholder="图形验证" ng-model="login.picCode" name="picCode" minlength="4" maxlength="4" required autocomplete="off" />
+                </div>
+                <div class="msgDiv" ng-class="{'oraLine':myForm.msg.$valid}">
+                    <img ng-show="!myForm.msg.$valid" src="/images/login/msIcon.png" />
+                    <img ng-show="myForm.msg.$valid" src="/images/login/msIcon2.png" />
+                    <input class="msgInput" name="msg" ng-model="login.smsCode" type="text" placeholder="短信验证" maxlength="4" minlength="4" ng-pattern="/^[0-9]{4}$/" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" required>
+                    <button type="button" class="getMsg" ng-if="isGetCode">{{nowTimer}}</button>
+                    <button type="button" class="getMsg" ng-click="getyzm(myForm)" ng-if="!isGetCode">获取验证码</button>
+                </div>
+                <div class="msgSet" ng-class="{'oraLine':myForm.passWord.$valid}">
+                    <img ng-show="!myForm.passWord.$valid" src="/images/login/set.png" />
+                    <img ng-show="myForm.passWord.$valid" src="/images/login/set2.png" />
+                    <input autocomplete="off" type="{{(passwordText|isShowPw).type}}" placeholder="密码必须为6-18位字母和数字组合" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/" ng-model="login.passWord" minlength="6" maxlength="18" name="passWord" required/>
+                    <span ng-click="showPassword(passwordText)"><img ng-if="!passwordText" src="/images/login/noeye.png"> <img ng-if="passwordText" src="/images/login/eye.png"></span>
+                </div>
+                <p style="color:#FFC800;" class="showRec" ng-init="showrec=false;" ng-click="showrec=!showrec;"><span ng-class="showrec==true?'active':''">▼</span><span></span> 推荐码（选填）</p>
+                <div ng-if="showrec==true">
+                    <input class="contact" name="recommPhone" type="text" ng-model="login.recommPhone" placeholder="请输入推荐码" ng-disabled="webFormPath.recommCode != undefined" required>
+                    <span></span>
+                </div>
+                <button class="next-btn" ng-click="zuce(myForm)">下一步</button>
+
+            </div>
+
+            <!-- <div class="valCodeDg" ng-show="showDg">
+                <span class="img-box"><img  src="/login/validateCode2.dos"></span> -->
+            <!--<span class="img-box"><img ng-click="clickInput($event)" src="/login/validateCode2.dos"></span>-->
+            <!-- <input id="imgcode" class="imgCode" ng-class="{'yellowClass':myForm.picCode.$valid}" type="text" placeholder="请输入图片中的字符" ng-model="login.picCode" name="picCode" minlength="4" maxlength="4" required autocomplete="off" />
+                <p class="changeImg"><a ng-click="clickInput($event)">看不清，换一张</a></p>
+                <button class="codeBtn" ng-disabled='!myForm.picCode.$dirty || !myForm.picCode.$valid' ng-click="getyzm(myForm);">确定</button>
+            </div> -->
+            <!--遮罩框-->
+            <!-- <div class="maskCodeDg" ng-show="showDg" ng-click="hideDg()"></div> -->
+
+            <!-- <form class="wap-login-box ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="fromregister" name="myForm"
+            novalidate="">
+            <div class="tel-box">
+                <input name="mobilephone" type="text" ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/" placeholder="请输入手机号（建议使用银行预留手机号）" ng-model="login.mobilephone"
+                    onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" ng-blur="blurID('focusMobilephone',myForm)" minlength="11"
+                    maxlength="11" required>
+                &lt;!&ndash;<span></span>&ndash;&gt;
+            </div>
+            &lt;!&ndash;图形验证码&ndash;&gt;
+            <div>
+                <input id="imgcode" type="text" placeholder="请输入图形码" ng-model="login.picCode" name="picCode" minlength="4" maxlength="4"
+                    required autocomplete="off" />
+                <span class="img-box"><img ng-click="clickInput($event)" src="/login/validateCode2.dos"></span>
+            </div>
+            <div ng-disabled="true">
+                <input ng-model="login.smsCode" type="text" placeholder="请输入短信验证码" maxlength="4" minlength="4" ng-pattern="/^[0-9]{4}$/" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" required>
+                <span ng-click="getyzm(myForm)">{{nowTimer}}</span>
+            </div>
+            <div>
+                <input autocomplete="off" type="{{(passwordText|isShowPw).type}}" placeholder="密码为6-18位字母数字混合" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/"
+                    ng-model="login.passWord" minlength="6" maxlength="18" name="passWord" required/>
+                <span></span>
+            </div>
+            <p style="color:#ff6400;" ng-init="showrec=false;" ng-click="showrec=!showrec;"><span ng-class="showrec==true?'active':''">▼</span><span></span> 推荐人（选填）</p>
+            <div ng-if="showrec==true">
+                <input name="recommPhone" type="text" ng-model="login.recommPhone" placeholder="请输入推荐人手机号码" ng-disabled="webFormPath.recommCode != undefined"
+                       ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/" minlength="11" maxlength="11" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" required
+                >
+                <span></span>
+            </div>
+            <div style="background:none;border:none;">
+                <p><i class="checkbox" ng-click="agree=!agree" ng-class="{checked:agree}" ng-init="agree=true"></i>我已阅读并同意
+                    <a href="http://www.aowubao.com/zc">《嗷呜宝注册协议》</a>
+                </p>
+            </div>
+        </form>
+        <button class="reg-btn" ng-click="zuce(myForm)" ng-disabled="!agree">立即注册</button>
+        <p>已有账号？<span ui-sref="dl">立即登录</span></p>-->
+        </div>
+    </form>
+    <div ng-show="isExit" class="isExit">
+        <img src="/images/login/comLogo.png" class="comLogo">
+        <p class="mobile">{{login.mobilephone | phonesub:'****'}}</p>
+        <p>当前手机号已注册嗷呜宝账号</p>
+        <button type="button" class="login" ui-sref="dl">点击登录</button>
+    </div>
+
+
+
+    <div class="div-tishi" ng-if="tishi">
+        <div class="div-tishi1">
+            <img src="images/login/icon-c.png" alt="" class="img" ng-click="tishikuang()">
+            <img src="images/login/icon-a.png" alt="" class="imgs">
+            <p>抱歉！您今日注册短息验证码错误已达限制，无法注册，请您明日再来。</p>
+            <div class="div-anniu" ng-click="tishikuang()">
+                <p>我知道了</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-tishi" ng-if="tishi1">
+        <div class="div-tishi1">
+            <img src="images/login/icon-c.png" alt="" class="img" ng-click="tishikuang1()">
+            <img src="images/login/icon-a.png" alt="" class="imgs">
+            <p>抱歉！您输入短息验证码错误次数达5次，请30分钟后再尝试。</p>
+            <div class="div-anniu" ng-click="tishikuang1()">
+                <p>我知道了</p>
+            </div>
+        </div>
+    </div>
+
+</div>

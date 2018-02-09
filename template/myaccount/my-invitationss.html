@@ -1,0 +1,37 @@
+<div class="my-invitation-wrapper" ng-controller="myInvitationssCtrl" style="position: relative;">
+	<div class="common-head" style="border-bottom: 1px solid #ddd;position: fixed;top:0"><i ng-click="toback()" style="z-index:99"></i>
+		<p>{{ title }}</p>
+	</div>
+	<div class="yqhylist">
+		<div class="yqhy">
+			<div>
+				<p>好友投资人数</p>
+				<p class="sp">{{ map.investors }} 人</p>
+			</div>
+			<div>
+				<p>好友注册红包</p>
+				<p class="sp">{{ map.regFaAmount }} 元</p>
+			</div>
+			<div>
+				<p>好友投资红包</p>
+				<p class="sp">{{ map.InvestFaAmount }} 元</p>
+			</div>
+		</div>
+		<div class="hybiaoti">
+			<div class="haoyou">
+				<div>被邀请人</div>
+				<div style="text-align: center;">好友状态</div>
+				<div style="text-align: right;">奖励红包金额(元)</div>
+			</div>
+			<div class="hylists" ng-repeat="lists in list" infinite-scroll='loadMore(list)'>
+				<div style="text-align: left;">{{ lists.mobilePhone || "--"}}</div>
+				<div>{{ lists.activityIdFrom || "- -"}}</div>
+				<div>{{ lists.amount || "--"}}</div>
+			</div>
+			<div class="imgs" ng-if="list.length<=0">
+				<img src="images/myinvitation/wu.png" alt="">
+			</div>
+		</div>
+	</div>
+
+</div>

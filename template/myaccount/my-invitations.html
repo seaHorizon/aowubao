@@ -1,0 +1,32 @@
+<div class="my-invitation-wrapper" ng-controller="myInvitationsCtrl" style="position: relative;">
+	<div class="jbs">
+		<div class="common-heads"><i ng-click="toback()" style="z-index:99"></i>
+			<p>{{ title }}</p>
+		</div>
+		<div style="height:1.3rem"></div>
+		<div class="erweima">
+			<img class="imgs" src="images/myinvitation/logo.png" alt="">
+			<div class="erwz">
+				<p style="color:#333">{{mobilephone | limitTo:3}}****{{mobilephone | limitTo:-4}}的二维码</p>
+				<p style="color:#aaa">告诉小伙伴我在使用嗷呜宝</p>
+			</div>
+			<img class="img" src="images/myinvitation/fengexian.png" alt="">
+			<div class="ma">
+				<qrcode class="erweimas" version="5" error-correction-level="L" size="250" data="https://m.aowubao.com//friendreg2?wap=true&recommCode={{recommCode}}"></qrcode>
+			</div>
+
+		</div>
+		<div class="guize">
+
+		</div>
+
+		<div class="share-mode">
+			<div class="copy-wrap">
+				<input id="copyTxt" style="width:60%" value="https://m.aowubao.com//friendreg2?wap=true&recommCode={{recommCode}}">
+				<a href="" class="copy" ng-click="copyNow()" ng-if="!cpoyFin" id="goToCopy">复制</a>
+			</div>
+		</div>
+
+
+	</div>
+</div>

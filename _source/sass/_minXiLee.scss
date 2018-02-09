@@ -1,0 +1,498 @@
+.minxi-box{
+	margin-top:4em;
+	font-size: 1rem;
+}
+.minxi-list{
+	width:100%;
+}
+.minxi-list th{
+	width:25%;
+	text-align: center;
+	height: 3em;
+	font-size: 1.4rem;
+	background:#D9D9D9; 
+}
+.minxi-list td{
+	width:25%;
+	font-size: 1.2rem;
+	text-align: center;
+}
+.minxi-list tr{
+	border-bottom: 1px solid #d2d2d2;
+}
+.wap-body{
+	margin-top: 8em;
+}
+.wap-no-data{
+	font-size:rem-calc(45);
+	text-align: center;
+	color:#d2d2d2;
+	margin-top: rem-calc(145);
+}
+
+
+.my-dizhi{
+	margin-bottom:5rem; 
+  >.div-dizhi{
+	// text-align: center;
+	// padding: 10rem 25%
+	// background: rgb(248,248,248);
+	// height: 42rem;
+	.div-kong{
+		text-align: center;
+		img{
+			margin: 13rem 0 1rem 0;
+			width: 50%
+		}
+		p{
+			font-size: 1.2rem;
+			color: #666;
+			// padding: 0 0 10rem 0;
+		}
+	}
+  }
+  .div-address{
+	  margin-top: 0.8rem;
+	  width: 100%;
+	  background-color: #fff;
+	  >.div-list{
+		padding: 3% 5% 1% 5%;
+		>p{
+			font-size: 1rem;
+		}
+		>.name{
+			display: inline-block;
+			width: 50%;
+			float: left;
+		}
+		>.phone{
+		  display: inline-block;
+		  width: 50%;
+		  float: left;
+		  text-align: right;
+		}
+		>.address{
+			clear: both;
+			padding: 0.5rem 0 ;
+		}
+	  }
+	  >.options{
+		  height: 3rem;
+		  border-top: 1px solid #ddd;
+		  line-height: 3rem;
+		  padding: 0 5%;
+		  >.acquiescence{
+
+			position: relative;
+			// text-align: right;
+			  display: inline-block;
+			  width: 6rem;
+			  span{
+				  display: inline-block;
+				  margin-left: 1.8rem;
+			  }
+			  img{
+				  width: 1rem;
+				  position: absolute;
+				  top: 1rem;
+				  left: 0;
+			  }
+		  }
+		  >.yellow{
+			color:#ff6400;
+		}
+		  >.edit{
+			position: relative;
+			// text-align: right;
+			  display: inline-block;
+			  width: 5rem;
+			  float: right;
+			  img{
+				  position: relative;
+				  top: 0.35rem;
+				  left: 1.3rem;
+				  width: 1rem;
+			  }
+			  span{
+				display: inline-block;
+				font-size: 0.7rem;
+				position: relative;
+				left: 1.5rem;
+			  }
+		  }
+		  >.deleting{
+			float: right;
+			position: relative;
+			// text-align: right;
+			  display: inline-block;
+			  width: 5rem;
+			  img{
+				  position: relative;
+				  top: 0.35rem;
+				  left: 1.3rem;
+				  width: 1rem;
+			  }
+			  span{
+				display: inline-block;
+				font-size: 0.7rem;
+				position: relative;
+				left: 1.5rem;
+			  }
+		  }
+	  }	  
+  }
+  .add-dizhi{
+	width: 100%;
+	max-width: 750px;
+	position: fixed;
+	bottom: 0;
+	height: 4rem;
+	background:rgb(255,215,45);
+	line-height: 4rem;
+	text-align: center;
+	p{
+	  color: #000;
+	  font-size: 1.4rem;
+	  
+	}
+}
+  form{
+	input::-webkit-input-placeholder { /* WebKit browsers */ 
+		
+		// color: red; 
+		font-family:"PingFangSC-Regular";
+		} 
+		
+		input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+		
+		// color: red; 
+		font-family:"PingFangSC-Regular";
+		} 
+		
+		input::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+		
+		// color: red; 
+		font-family:"PingFangSC-Regular";
+		} 
+		
+		input:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+		
+		// color: red; 
+		font-family:"PingFangSC-Regular";
+		} 
+	  
+  .xinzengdizhi{
+	  margin-top:0.8rem; 
+	  background-color: #fff;
+	  .xiahuaxian{
+		  border-bottom:1px solid #ddd; 
+		  width: 94.5%;
+		//  float: right;
+		position: relative;
+		left: 5.5%;
+		z-index: 99;
+	  }
+	  .shouhuoren{
+		//   border-bottom:1px solid #ddd;
+		  position: relative;
+		  >span{
+			  position: absolute;
+			  font-size: 1rem;
+			  line-height: 3.5rem;
+			  left: 1.5rem;
+		  }
+		>input{
+			padding-left: 6.5rem;
+			// width: 100%;
+			height: 3.5rem;
+			font-size: 1rem;
+			border: none;
+			background: #fff;
+			-webkit-appearance: none;
+		  }
+		}
+	  }
+	  .shoujihao{
+		  position: relative;
+		  >span{
+			position: absolute;
+			font-size: 1rem;
+			line-height: 3.5rem;
+			left: 1.5rem;
+		}
+		>input{
+			padding-left: 6.5rem;
+			// width: 100%;
+			height: 3.5rem;
+			font-size: 1rem;
+			border: none;
+			background: #fff;
+			-webkit-appearance: none;
+		  }
+	  }
+	  .xiangxidizhi{
+		  width: 100%;
+
+		  >textarea{
+			overflow: hidden;
+			width: 90%;
+			resize : none;
+			font-size: 1rem;
+			margin: 1.5rem 0 1.5rem 1.5rem;
+			font-family: "PingFangSC-Regular";
+		  }
+		
+  }
+
+  >.acquiescence{
+	  margin-top:0.8rem; 
+	  width: 90%;
+	  height: 4rem;
+	  background-color: #fff;
+	  line-height: 4rem;
+	  padding: 0 5%;
+	  position: relative;
+
+	  >span{
+		  font-size: 1rem;
+	  }
+
+
+
+
+	  .testswitch {
+		position: absolute;
+		right: 1.5rem;
+		top: 1rem;
+		float: left;
+		width: 60px;
+		margin: 0;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+	
+	.testswitch-checkbox {
+		display: none;
+	}
+	
+	.testswitch-label {
+		display: block;
+		overflow: hidden;
+		cursor: pointer;
+		border: 1px solid #ddd;
+		border-radius: 20px;
+	}
+	
+	.testswitch-inner {
+		display: block;
+		width: 200%;
+		margin-left: -100%;
+		transition: margin 0.3s ease-in 0s;
+	}
+	
+	.testswitch-inner::before,
+	.testswitch-inner::after {
+		display: block;
+		float: right;
+		width: 50%;
+		height: 30px;
+		padding: 0;
+		line-height: 30px;
+		font-size: 14px;
+		color: white;
+		font-family: Trebuchet, Arial, sans-serif;
+		font-weight: bold;
+		box-sizing: border-box;
+	}
+	
+	.testswitch-inner::after {
+		content: attr(data-on);
+		padding-left: 10px;
+		background-color: rgb(255, 215, 45);
+		color: #FFFFFF;
+	}
+	
+	.testswitch-inner::before {
+		content: attr(data-off);
+		padding-right: 10px;
+		background-color: #EEEEEE;
+		color: #ddd;
+		text-align: right;
+	}
+	
+	.testswitch-switch {
+		position: absolute;
+		display: block;
+		width: 28px;
+		height: 28px;
+		margin: 1px;
+		background: #FFFFFF;
+		top: 0;
+		bottom: 0;
+		right: 28px;
+		border: 1px solid #ddd;
+		border-radius: 20px;
+		transition: all 0.3s ease-in 0s;
+	}
+	
+	.testswitch-checkbox:checked+.testswitch-label .testswitch-inner {
+		margin-left: 0;
+	}
+	
+	.testswitch-checkbox:checked+.testswitch-label .testswitch-switch {
+		right: 0px;
+	}
+
+  }
+  }
+  
+  .save{
+	  text-align: center;
+	  line-height: 4rem;
+	  font-size: 1.3rem;
+	  height: 4rem;
+	  width: 90%;
+	  margin: 1rem auto 0;
+	  background-color:rgb(255,215,45);
+	  border-radius: 0.5rem;
+	  color: #333;
+  }
+
+
+  .prompting{
+	  width: 44%;
+	//   margin: 0 auto;
+	  text-align: center;
+	  color: #fff;
+	  background-color: rgba(0, 0, 0,0.7);
+	  border-radius: 0.8rem;
+	  padding: 1rem 0;
+	  position: fixed;
+	  top: 13.7rem;
+	  left: 28%;
+	  >img{
+		  width: 2rem;
+	  }
+  }
+
+  .mask{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	max-width: 750px;
+	top: 0;
+	margin: auto;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 99;
+	text-align: center;
+	>.deleting{
+	  max-width: 750px;
+		font-size: 1.2rem;
+		text-align: center;
+		width:20rem;
+		margin: 0 4rem;
+		background-color: #fff;
+		position: fixed;
+		top: 40%;
+		// left: 17%;
+		border-radius: 0.8rem;
+		>p{
+
+			padding: 1rem 0 ;
+			color: #000;
+		}
+		>div{
+
+			border-top: 1px solid #ddd;
+			>p{
+				color:rgb(8, 121, 233);
+				display: inline-block;
+				float: left;
+				width: 49%;
+				height: 3rem;
+				line-height: 3rem;
+			}
+		}
+	}
+  }
+
+ 
+}
+
+
+.div-tishi{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	max-width: 750px;
+	top: 0;
+	margin: auto;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 99;
+	text-align: center;
+	>.div-tishi1{
+		max-width: 750px;
+		font-size: 1.2rem;
+		text-align: center;
+		width:22rem;
+		height: 25rem;
+		margin: 0 3rem;
+		background-color: #fff;
+		position: fixed;
+		top: 20%;
+		border-radius: 0.8rem;
+		padding: 5rem 0 0 0;
+		>.img{
+		 position: absolute;
+		 top: 1rem;
+		 right: 1rem;
+		 width: 1rem;
+		}
+		>.imgs{
+			width: 8rem;
+		}
+		>p{
+			display: inline-block;
+			padding: 3rem 1.1rem 0 1.1rem;
+			font-size: 1rem;
+			font-family:"PingFangSC-Regular";
+			color: #666;
+		}
+		>.div-anniu{
+			line-height: 3.5rem;
+			margin: 2.5rem auto ;
+			width: 12rem;
+			height: 3.5rem;
+			border-radius: 2rem;
+			background-color: rgb(255, 220, 0);
+			
+			>p{
+				font-family:"PingFangSC-Regular";
+				font-size: 1rem;
+				color: #333;
+			}
+		}
+	}
+}
+
+
+
+
+.promptingyouhui{
+	max-width: 750px;
+	width:20rem;
+	margin: 0 4rem;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(0, 0, 0,0.7);
+	border-radius: 0.8rem;
+	padding: 1rem 0;
+	position: fixed;
+	top: 23rem;
+	// left: 28%;
+	z-index: 999;
+	>img{
+		width: 2rem;
+	}
+}

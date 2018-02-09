@@ -1,0 +1,58 @@
+<div class="friendreg2">
+    <div class="banner">
+        <img src="images/activity/friendreg/banner.png" alt="">
+
+    </div>
+    <main>
+        <div class="container register-con">
+            <form class="login-box ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="fromregister" name="myForm" novalidate="">
+                <div class="wap-login-title">嗷呜宝不会在任何地方泄露您的手机号</div>
+                <div class="tel-box">
+                    <input name="mobilephone" type="text" ng-pattern="/^1[3|4|5|7|8][0-9]{9}$/" placeholder="请输入手机号" ng-model="login.mobilephone" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" ng-blur="blurID('focusMobilephone',myForm)" minlength="11" maxlength="11"
+                        required>
+                    <!--<span></span>-->
+                </div>
+                <!--图形验证码-->
+                <div>
+                    <input id="imgcode" type="text" placeholder="请输入图形码" ng-model="login.picCode" name="picCode" minlength="4" maxlength="4" required autocomplete="off" />
+                    <span class="img-box"><img ng-click="clickInput($event)" src="/login/validateCode2.dos"></span>
+                </div>
+                <div ng-disabled="true" class="yanzhenma">
+                    <input id="message" ng-model="login.smsCode" type="text" placeholder="请输入短信验证码" name="smsCode" maxlength="4" minlength="4" ng-pattern="/^[0-9]{4}$/" onkeyup="this.value=this.value.replace(/[\D\.]/gi,'')" required>
+                    <span ng-click="getyzm(myForm)" style="background: #fcd031;">{{nowTimer}}</span>
+                </div>
+
+                <div class="input-box" ng-class="{true:'caroil'}[carOil]">
+                    <input autocomplete="off" type="{{(passwordText|isShowPw).type}}" placeholder="密码为6-18位字母数字混合" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/" ng-model="login.passWord" name="passWord" required class="input" />
+                </div>
+
+                <p>注册即视为同意《嗷呜宝用户协议》</p>
+            </form>
+            <button class="reg-btn" ng-click="zuce(myForm)">立即注册</button>
+            <!-- <button class="reg-btn" ui-sref="dl">已有账号？立即登录</button> -->
+        </div>
+
+        <div class="contents">
+            <div class="content-header">
+                <div>
+                    <img src="images/activity/friendreg/title.png" alt="">
+                </div>
+                <p>我们的优势</p>
+            </div>
+            <div class="advantage" style="color:#fcd031">
+                <img src="images/activity/friendreg/advantage.png" alt="">
+            </div>
+
+        </div>
+    </main>
+    <div class="footer">
+        <div>
+            <p>联系我们</p>
+            <p>客服电话：400-921-0758</p>
+            <p>客服微信服务号：嗷呜宝</p>
+        </div>
+        <div class="footer-fx"><span>市场有风险，投资需谨慎</span></div>
+    </div>
+
+
+</div>
